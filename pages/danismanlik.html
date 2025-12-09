@@ -4,33 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danışmanlık - Feza Savaş</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
             <div class="logo">
-                <img src="../images/logo.png" alt="Feza Savaş Logo">
+                <div class="logo-image">
+                    <img src="../images/logo.png" alt="Feza Savaş Logo">
+                </div>
+                <h1>Feza Savaş</h1>
+                <span>Danışmanlık & Dış Ticaret</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Ana Sayfa</a></li>
-                <li><a href="danismanlik.html">Danışmanlık</a></li>
-                <li><a href="ticaret.html">Ticaret</a></li>
-                <li><a href="delta-proje.html">Delta Proje</a></li>
-                <li><a href="klinker.html">Klinker</a></li>
-                <li><a href="pet-sise.html">PET Şişe</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h1>Danışmanlık Hizmetlerimiz</h1>
-            <p>Uzman kadromuzla profesyonel danışmanlık</p>
-        </section>
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html">Ana Sayfa</a></li>
+                        <li><a href="danismanlik.html" class="active">Danışmanlıklarımız</a></li>
+                        <li><a href="ticaret.html">Dünya ile Ticaret</a></li>
+                    </ul>
+                </div>
 
-        <section class="services">
-            <div class="content">
+                <div class="nav-section">
+                    <div class="nav-title">Projelerimiz</div>
+                    <ul class="nav-menu">
+                        <li><a href="delta-proje.html">Delta Proje</a></li>
+                        <li><a href="klinker.html">Klinker İhracatı</a></li>
+                        <li><a href="pet-sise.html">Pet Şişe İhracatı</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2025 Feza Savaş</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Danışmanlık <span>Hizmetlerimiz</span></h2>
+                    <p class="hero-subtitle">
+                        Uzman kadromuzla profesyonel danışmanlık hizmetleri sunuyoruz.
+                    </p>
+                    <div class="hero-line"></div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section class="content-section">
                 <h2>Neler Sunuyoruz?</h2>
                 <p>Danışmanlık hizmetlerimiz ile işinizi bir üst seviyeye taşıyın. Uzman kadromuz, sektörel deneyimi ve güncel bilgileriyle size en iyi çözümleri sunar.</p>
 
@@ -41,22 +74,28 @@
                     <li>Proje Yönetimi</li>
                     <li>Kalite Yönetimi</li>
                     <li>Süreç İyileştirme</li>
+                    <li>Organizasyonel Gelişim</li>
                 </ul>
 
                 <h3>Neden Bizi Seçmelisiniz?</h3>
                 <ul>
-                    <li>Yılların deneyimi</li>
-                    <li>Sektörel uzmanlık</li>
-                    <li>Müşteri odaklı yaklaşım</li>
-                    <li>Ölçülebilir sonuçlar</li>
+                    <li>Yılların deneyimi ve sektörel bilgi birikimi</li>
+                    <li>Sektörel uzmanlık ve güncel metodolojiler</li>
+                    <li>Müşteri odaklı yaklaşım ve özel çözümler</li>
+                    <li>Ölçülebilir sonuçlar ve sürdürülebilir gelişim</li>
+                    <li>Güvenilir iş ortaklığı ve sürekli destek</li>
                 </ul>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Feza Savaş. Tüm hakları saklıdır.</p>
-    </footer>
+                <h3>Çalışma Sürecimiz</h3>
+                <p>Danışmanlık süreçlerimiz, müşteri ihtiyaçlarının detaylı analizi ile başlar. İşletmenizin mevcut durumunu değerlendirerek, hedeflerinize ulaşmanız için en uygun stratejiyi geliştiririz. Uygulama aşamasında ekiplerinizle yakın işbirliği içinde çalışarak, sürdürülebilir sonuçlar elde etmenizi sağlarız.</p>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="../index.html#iletisim">İletişim</a></p>
+            </footer>
+        </main>
+    </div>
 
     <script src="../js/main.js"></script>
 </body>

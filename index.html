@@ -3,57 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feza Savaş - Ana Sayfa</title>
+    <title>Feza Savaş - Sizin için, sizinle birlikte</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
             <div class="logo">
-                <img src="images/logo.png" alt="Feza Savaş Logo">
+                <div class="logo-image">
+                    <img src="images/logo.png" alt="Feza Savaş Logo">
+                </div>
+                <h1>Feza Savaş</h1>
+                <span>Danışmanlık & Dış Ticaret</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="pages/danismanlik.html">Danışmanlık</a></li>
-                <li><a href="pages/ticaret.html">Ticaret</a></li>
-                <li><a href="pages/delta-proje.html">Delta Proje</a></li>
-                <li><a href="pages/klinker.html">Klinker</a></li>
-                <li><a href="pages/pet-sise.html">PET Şişe</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h1>Feza Savaş'a Hoş Geldiniz</h1>
-            <p>Profesyonel çözümleriniz için yanınızdayız</p>
-        </section>
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                        <li><a href="pages/danismanlik.html">Danışmanlıklarımız</a></li>
+                        <li><a href="pages/ticaret.html">Dünya ile Ticaret</a></li>
+                    </ul>
+                </div>
 
-        <section class="services">
-            <h2>Hizmetlerimiz</h2>
-            <div class="service-cards">
-                <div class="card">
-                    <h3>Danışmanlık</h3>
-                    <p>Uzman kadromuzla danışmanlık hizmetleri</p>
-                    <a href="pages/danismanlik.html" class="btn">Detaylı Bilgi</a>
+                <div class="nav-section">
+                    <div class="nav-title">Projelerimiz</div>
+                    <ul class="nav-menu">
+                        <li><a href="pages/delta-proje.html">Delta Proje</a></li>
+                        <li><a href="pages/klinker.html">Klinker İhracatı</a></li>
+                        <li><a href="pages/pet-sise.html">Pet Şişe İhracatı</a></li>
+                    </ul>
                 </div>
-                <div class="card">
-                    <h3>Ticaret</h3>
-                    <p>Kapsamlı ticaret çözümleri</p>
-                    <a href="pages/ticaret.html" class="btn">Detaylı Bilgi</a>
-                </div>
-                <div class="card">
-                    <h3>Delta Proje</h3>
-                    <p>İnovatif proje yönetimi</p>
-                    <a href="pages/delta-proje.html" class="btn">Detaylı Bilgi</a>
-                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2025 Feza Savaş</p>
             </div>
-        </section>
-    </main>
+        </aside>
 
-    <footer>
-        <p>&copy; 2024 Feza Savaş. Tüm hakları saklıdır.</p>
-    </footer>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Sizin için, <span>sizinle birlikte</span></h2>
+                    <p class="hero-subtitle">
+                        Türkiye'den dünyaya açılan kapınız. Profesyonel danışmanlık ve güvenilir dış ticaret çözümleri ile işinizi büyütüyoruz.
+                    </p>
+                    <div class="hero-line"></div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services" id="hizmetler">
+                <div class="section-header">
+                    <div class="section-label">Hizmetlerimiz</div>
+                    <h3 class="section-title">İşler / Çalışmalarımız</h3>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card" id="danismanlik">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>Danışmanlıklarımız</h3>
+                        <p>Stratejik planlama, operasyonel mükemmellik ve süreç iyileştirme konularında uzman danışmanlık hizmetleri sunuyoruz.</p>
+                        <a href="pages/danismanlik.html" class="service-link">
+                            Detaylı Bilgi
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="service-card" id="ticaret">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h3>Dünya ile Ticaret</h3>
+                        <p>İhracat ve ithalat süreçlerinizde güvenilir partneriniz. Uluslararası pazarlara erişiminizi kolaylaştırıyoruz.</p>
+                        <a href="pages/ticaret.html" class="service-link">
+                            Detaylı Bilgi
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="projects" id="projeler">
+                <div class="section-header">
+                    <div class="section-label">Aktif Projeler</div>
+                    <h3 class="section-title">Projelerimiz</h3>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card" id="delta">
+                        <span class="project-badge">Danışmanlık</span>
+                        <h4>Delta Proje</h4>
+                        <p>Stratejik iş geliştirme ve operasyonel mükemmellik projesi</p>
+                    </div>
+
+                    <div class="project-card" id="klinker">
+                        <span class="project-badge">İhracat</span>
+                        <h4>Klinker İhracatı</h4>
+                        <p>Kaliteli klinker ürünlerinin uluslararası pazarlara sunumu</p>
+                    </div>
+
+                    <div class="project-card" id="pet">
+                        <span class="project-badge">İhracat</span>
+                        <h4>Pet Şişe İhracatı</h4>
+                        <p>Pet şişe ve ambalaj ürünlerinin global dağıtımı</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="#iletisim">İletişim</a></p>
+            </footer>
+        </main>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

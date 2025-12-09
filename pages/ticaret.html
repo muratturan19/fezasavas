@@ -4,59 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ticaret - Feza Savaş</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
             <div class="logo">
-                <img src="../images/logo.png" alt="Feza Savaş Logo">
+                <div class="logo-image">
+                    <img src="../images/logo.png" alt="Feza Savaş Logo">
+                </div>
+                <h1>Feza Savaş</h1>
+                <span>Danışmanlık & Dış Ticaret</span>
             </div>
-            <ul class="nav-links">
-                <li><a href="../index.html">Ana Sayfa</a></li>
-                <li><a href="danismanlik.html">Danışmanlık</a></li>
-                <li><a href="ticaret.html">Ticaret</a></li>
-                <li><a href="delta-proje.html">Delta Proje</a></li>
-                <li><a href="klinker.html">Klinker</a></li>
-                <li><a href="pet-sise.html">PET Şişe</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h1>Ticaret Çözümleri</h1>
-            <p>Kapsamlı ticari hizmetler ve çözümler</p>
-        </section>
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <ul class="nav-menu">
+                        <li><a href="../index.html">Ana Sayfa</a></li>
+                        <li><a href="danismanlik.html">Danışmanlıklarımız</a></li>
+                        <li><a href="ticaret.html" class="active">Dünya ile Ticaret</a></li>
+                    </ul>
+                </div>
 
-        <section class="services">
-            <div class="content">
+                <div class="nav-section">
+                    <div class="nav-title">Projelerimiz</div>
+                    <ul class="nav-menu">
+                        <li><a href="delta-proje.html">Delta Proje</a></li>
+                        <li><a href="klinker.html">Klinker İhracatı</a></li>
+                        <li><a href="pet-sise.html">Pet Şişe İhracatı</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2025 Feza Savaş</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Dünya ile <span>Ticaret</span></h2>
+                    <p class="hero-subtitle">
+                        Kapsamlı ticari hizmetler ve dış ticaret çözümleri ile global pazarlara açılın.
+                    </p>
+                    <div class="hero-line"></div>
+                </div>
+            </section>
+
+            <!-- Content Section -->
+            <section class="content-section">
                 <h2>Ticaret Hizmetlerimiz</h2>
-                <p>İthalat, ihracat ve iç ticaret alanlarında geniş bir yelpazede hizmet sunuyoruz. Müşterilerimize en kaliteli ürünleri en uygun koşullarda ulaştırıyoruz.</p>
+                <p>İthalat, ihracat ve iç ticaret alanlarında geniş bir yelpazede hizmet sunuyoruz. Müşterilerimize en kaliteli ürünleri en uygun koşullarda ulaştırıyoruz. Uluslararası pazarlarda güvenilir ortağınız olarak, ticari başarınız için çalışıyoruz.</p>
 
                 <h3>Ticaret Alanlarımız</h3>
                 <ul>
-                    <li>İthalat ve İhracat</li>
-                    <li>Toptan Ticaret</li>
+                    <li>İthalat ve İhracat işlemleri</li>
+                    <li>Toptan Ticaret ve dağıtım</li>
                     <li>Dış Ticaret Danışmanlığı</li>
-                    <li>Lojistik Çözümleri</li>
-                    <li>Gümrük İşlemleri</li>
+                    <li>Lojistik Çözümleri ve taşımacılık</li>
+                    <li>Gümrük İşlemleri ve mevzuat danışmanlığı</li>
+                    <li>Pazar araştırması ve analiz</li>
                 </ul>
 
                 <h3>Avantajlarımız</h3>
                 <ul>
-                    <li>Geniş tedarikçi ağı</li>
-                    <li>Rekabetçi fiyatlar</li>
-                    <li>Hızlı teslimat</li>
-                    <li>Kalite garantisi</li>
+                    <li>Geniş tedarikçi ağı ve güvenilir iş ortakları</li>
+                    <li>Rekabetçi fiyatlar ve esnek ödeme koşulları</li>
+                    <li>Hızlı ve güvenli teslimat</li>
+                    <li>Kalite garantisi ve ürün takibi</li>
+                    <li>Deneyimli kadro ve profesyonel hizmet</li>
                 </ul>
-            </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Feza Savaş. Tüm hakları saklıdır.</p>
-    </footer>
+                <h3>İhracat Deneyimimiz</h3>
+                <p>Yılların verdiği tecrübe ile uluslararası pazarlarda başarılı projeler gerçekleştiriyoruz. Klinker ve PET şişe ihracatımızda edindiğimiz deneyim ile müşterilerimize güvenilir ve kaliteli hizmet sunuyoruz.</p>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="../index.html#iletisim">İletişim</a></p>
+            </footer>
+        </main>
+    </div>
 
     <script src="../js/main.js"></script>
 </body>
