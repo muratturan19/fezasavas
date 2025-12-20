@@ -553,8 +553,7 @@ body {
     text-shadow: 0 12px 20px rgba(139, 47, 124, 0.18);
 }
 
-.bio-text p:last-child,
-.bio-block p:last-child {
+.bio-block p:last-of-type {
     margin-bottom: 0;
 }
 
