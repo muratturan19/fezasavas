@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle (gelecekte eklenebilir)
     initMobileMenu();
+
+    // Biyografi dil değiştirici
+    initBioLanguageSwitcher();
 });
 
 // Smooth scroll fonksiyonu
@@ -41,6 +44,44 @@ function initMobileMenu() {
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+        });
+    }
+}
+
+// Biyografi dil seçimi
+function initBioLanguageSwitcher() {
+    const switcher = document.querySelector('.bio-language-switcher');
+    if (!switcher) {
+        return;
+    }
+
+    const buttons = Array.from(switcher.querySelectorAll('.language-btn[data-lang]'));
+    const blocks = Array.from(document.querySelectorAll('.bio-block[data-lang]'));
+
+    if (!buttons.length || !blocks.length) {
+        return;
+    }
+
+    const defaultButton = switcher.querySelector('.language-btn.is-active') || buttons[0];
+    setActiveLanguage(defaultButton.dataset.lang);
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            setActiveLanguage(button.dataset.lang);
+        });
+    });
+
+    function setActiveLanguage(lang) {
+        buttons.forEach(button => {
+            const isActive = button.dataset.lang === lang;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+
+        blocks.forEach(block => {
+            const isActive = block.dataset.lang === lang;
+            block.classList.toggle('is-active', isActive);
+            block.setAttribute('aria-hidden', isActive ? 'false' : 'true');
         });
     }
 }
