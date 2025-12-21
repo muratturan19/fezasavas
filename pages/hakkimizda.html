@@ -67,11 +67,25 @@
                     </p>
                     <div class="hero-line"></div>
                 </div>
+                <div class="bio-language-switcher" role="tablist" aria-label="Dil seçimi">
+                    <button class="language-btn is-active" type="button" data-lang="tr" aria-pressed="true">
+                        <span class="flag" aria-hidden="true">🇹🇷</span>
+                        <span class="lang-label">TR</span>
+                    </button>
+                    <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
+                        <span class="flag" aria-hidden="true">🇬🇧</span>
+                        <span class="lang-label">EN</span>
+                    </button>
+                    <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
+                        <span class="flag" aria-hidden="true">🇫🇷</span>
+                        <span class="lang-label">FR</span>
+                    </button>
+                </div>
             </section>
 
             <!-- Content Section -->
             <section class="content-section bio-section">
-                <div class="bio-block bio-block--with-photo">
+                <div class="bio-block bio-block--with-photo is-active" data-lang="tr" lang="tr" aria-hidden="false">
                     <div class="bio-photo">
                         <img src="../images/feza.png" alt="Feza Savaş">
                     </div>
@@ -86,7 +100,7 @@
                     </div>
                 </div>
 
-                <div class="bio-block" lang="en">
+                <div class="bio-block" data-lang="en" lang="en" aria-hidden="true">
                     <h2 class="bio-title">Who Am I?</h2>
                     <p>A significant part of my more than 25 years of professional experience has been spent in the automotive sector, holding senior executive roles within multinational corporations.</p>
                     <p>For over twenty years, I have been providing investment and management consulting services to leading institutions in Türkiye.</p>
@@ -96,7 +110,7 @@
                     <p>In addition, I assist industrial companies seeking new markets by identifying buyers for their products and creating suitable partnerships based on thorough market research.</p>
                 </div>
 
-                <div class="bio-block" lang="fr">
+                <div class="bio-block" data-lang="fr" lang="fr" aria-hidden="true">
                     <h2 class="bio-title">Qui Suis-Je ?</h2>
                     <p>Une part essentielle de mes plus de 25 années d’expérience s’est déroulée dans le secteur automobile, au sein de groupes internationaux, où j’ai occupé des postes de direction générale.</p>
                     <p>Depuis plus de vingt ans, j’accompagne les principales institutions turques en tant que conseiller en investissement et en management.</p>
