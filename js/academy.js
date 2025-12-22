@@ -93,7 +93,8 @@ const loadAcademy = async () => {
             throw new Error('Akademi listesi yüklenemedi.');
         }
         const posts = await response.json();
-        const sortedPosts = posts
+        const visiblePosts = posts.filter((post) => post.published !== false);
+        const sortedPosts = visiblePosts
             .slice()
             .sort((a, b) => new Date(b.date) - new Date(a.date));
 
