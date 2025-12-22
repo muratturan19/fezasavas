@@ -99,6 +99,61 @@ Site URL'i: `https://muratturan19.github.io/fezasavas/`
 
 Her sayfa için ilgili HTML dosyasını düzenleyin. Tüm sayfalar aynı yapıya sahiptir ve kolayca düzenlenebilir.
 
+## 📰 Akademi (Git tabanlı CMS)
+
+Bu repo statik kalır; makale yayınlama işlemi **/admin** paneli ve ayrı bir Render Web Service üzerinden yapılır. Yayınlama sırasında backend GitHub'a otomatik commit atar, Render yeniden build alır.
+
+### 1) Akademi sayfaları
+
+- Liste: `/akademi/` (kart grid + etiket filtresi)
+- Detay: `/akademi/<slug>.html`
+- İçerik klasörü: `content/academy/*.md`
+- Index dosyası: `content/academy/index.json`
+- Görseller: `uploads/`
+
+### 2) Admin paneli
+
+- URL: `/admin/`
+- Giriş: tek kullanıcı (username + password)
+- API adresi: Render backend URL'si
+
+> Admin panel, yayınlama isteğini backend'e gönderir. Backend GitHub API ile commit atar.
+
+### 3) Backend (Render Web Service)
+
+Backend kodu `backend/` klasöründedir (Node.js + Express).
+
+#### Render ayarları
+
+- Root Directory: `backend`
+- Build Command: `npm install`
+- Start Command: `npm start`
+
+#### Gerekli ortam değişkenleri
+
+- `ADMIN_USER`: Admin kullanıcı adı
+- `ADMIN_PASSWORD`: Admin şifre
+- `ADMIN_ORIGIN`: Admin panel domaini (örn. `https://fezasavas.com`) veya `*`
+- `GITHUB_TOKEN`: GitHub Personal Access Token (repo write)
+- `GITHUB_REPO`: `owner/repo` formatında repo adı
+- `GITHUB_BRANCH`: `main` (opsiyonel)
+
+#### Backend endpointleri
+
+- `POST /publish` (Basic Auth)
+  - FormData alanları: `title`, `description`, `date`, `tags`, `body`, `coverImage`
+- `GET /health`
+
+### 4) GitHub token (PAT) oluşturma
+
+1. GitHub → Settings → Developer settings → Personal access tokens
+2. `repo` yazma izni verin
+3. Token'ı Render `GITHUB_TOKEN` env olarak ekleyin
+
+### 5) Admin panelini bağlama
+
+`/admin` sayfasına gidin, kullanıcı bilgilerini ve Render backend URL'sini girin. Sonraki yayınlamalarda bilgiler tarayıcı oturumunda saklanır.
+
 ## 📝 Yapılacaklar
 
 - [ ] İletişim formu ekleme
