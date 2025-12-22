@@ -117,8 +117,6 @@ Bu repo statik kalır; makale yayınlama işlemi **/admin** paneli ve ayrı bir 
 - Giriş: tek kullanıcı (username + password)
 - API adresi: Render backend URL'si
 
-> Admin giriş bilgileri Render backend servisindeki `ADMIN_USER` ve `ADMIN_PASSWORD` ile aynıdır.
-
 > Admin panel, yayınlama isteğini backend'e gönderir. Backend GitHub API ile commit atar.
 
 ### 3) Backend (Render Web Service)
@@ -145,20 +143,6 @@ Backend kodu `backend/` klasöründedir (Node.js + Express).
 - `POST /publish` (Basic Auth)
   - FormData alanları: `title`, `description`, `date`, `tags`, `body`, `coverImage`
 - `GET /health`
-
-### 6) Yazı ve görseller nasıl yayınlanır?
-
-1. `/admin/` sayfasına gidin.
-2. Backend servisinde tanımlı kullanıcı adı/şifre ile giriş yapın.
-3. Formdaki alanları doldurun:
-   - Başlık, açıklama, tarih ve içerik zorunludur.
-   - Kapak görseli seçilirse `uploads/` içine kaydedilir.
-4. “Yayınla” deyince backend şu dosyaları repo'ya commitler:
-   - Markdown: `content/academy/YYYY-MM-DD-slug.md`
-   - HTML: `akademi/YYYY-MM-DD-slug.html`
-   - Görsel (varsa): `uploads/<slug>.<ext>`
-   - Index: `content/academy/index.json`
-5. Render yeni commit ile otomatik build alır, makale `/akademi` listesinde görünür.
 
 ### 4) GitHub token (PAT) oluşturma
 
