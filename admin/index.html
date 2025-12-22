@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademi Yönetimi - Feza Savaş</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./admin.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <header class="admin-header">
+            <div>
+                <h1>Akademi Yönetim Paneli</h1>
+                <p>Feza Bey için makale ve görsel yayınlama arayüzü.</p>
+            </div>
+            <a class="admin-link" href="../akademi/" target="_blank" rel="noopener">Akademi sayfasını aç</a>
+        </header>
+
+        <section class="admin-card" id="login-card">
+            <h2>Giriş</h2>
+            <p class="admin-hint">Giriş bilgileri Render backend servisinde tanımlanan <strong>ADMIN_USER</strong> ve <strong>ADMIN_PASSWORD</strong> ile aynıdır.</p>
+            <form id="login-form">
+                <label>
+                    Kullanıcı Adı
+                    <input type="text" id="admin-username" autocomplete="username" required>
+                </label>
+                <label>
+                    Şifre
+                    <input type="password" id="admin-password" autocomplete="current-password" required>
+                </label>
+                <label>
+                    API Adresi
+                    <input type="url" id="admin-api" placeholder="https://your-admin-api.onrender.com" required>
+                </label>
+                <button type="submit" class="primary">Giriş Yap</button>
+                <p class="admin-hint">API adresi, Render üzerindeki yayın servisidir. Örn: <code>https://fezasavas-academy.onrender.com</code></p>
+            </form>
+        </section>
+
+        <section class="admin-card" id="publish-card" hidden>
+            <h2>Yeni Akademi Makalesi</h2>
+            <form id="publish-form">
+                <div class="admin-grid">
+                    <label>
+                        Başlık *
+                        <input type="text" name="title" required>
+                    </label>
+                    <label>
+                        Yayın Tarihi *
+                        <input type="date" name="date" required>
+                    </label>
+                </div>
+                <label>
+                    Kısa Açıklama *
+                    <textarea name="description" rows="3" required></textarea>
+                </label>
+                <label>
+                    Etiketler (virgülle ayırın)
+                    <input type="text" name="tags" placeholder="strateji, otomasyon">
+                </label>
+                <label>
+                    Kapak Görseli
+                    <input type="file" name="coverImage" accept="image/*">
+                </label>
+                <label>
+                    İçerik (Markdown) *
+                    <textarea name="body" rows="12" required></textarea>
+                </label>
+                <button type="submit" class="primary">Yayınla</button>
+                <p id="publish-status" class="admin-status"></p>
+            </form>
+            <p class="admin-hint">Kapak görseli seçildiğinde dosya <code>uploads/</code> klasörüne kaydedilir. Yayınlanan makaleler otomatik olarak <code>/akademi</code> sayfasında görünür.</p>
+        </section>
+    </div>
+
+    <script src="./admin.js"></script>
+</body>
+</html>
