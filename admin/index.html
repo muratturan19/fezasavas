@@ -40,38 +40,70 @@
             </form>
         </section>
 
-        <section class="admin-card" id="publish-card" hidden>
-            <h2>Yeni Akademi Makalesi</h2>
-            <form id="publish-form">
-                <div class="admin-grid">
-                    <label>
-                        Başlık *
-                        <input type="text" name="title" required>
-                    </label>
-                    <label>
-                        Yayın Tarihi *
-                        <input type="date" name="date" required>
-                    </label>
+        <section id="admin-content" hidden>
+            <div class="admin-tabs">
+                <button type="button" class="admin-tab is-active" data-admin-tab="publish">Yeni Makale</button>
+                <button type="button" class="admin-tab" data-admin-tab="posts">Makalelerim</button>
+            </div>
+
+            <section class="admin-card" id="publish-card" data-admin-panel="publish">
+                <div class="admin-card-header">
+                    <h2 id="publish-title">Yeni Akademi Makalesi</h2>
+                    <button type="button" class="link-button" id="cancel-edit" hidden>Yeni makale oluştur</button>
                 </div>
-                <label>
-                    Kısa Açıklama *
-                    <textarea name="description" rows="3" required></textarea>
-                </label>
-                <label>
-                    Etiketler (virgülle ayırın)
-                    <input type="text" name="tags" placeholder="strateji, otomasyon">
-                </label>
-                <label>
-                    Kapak Görseli
-                    <input type="file" name="coverImage" accept="image/*">
-                </label>
-                <label>
-                    İçerik (Markdown) *
-                    <textarea name="body" rows="12" required></textarea>
-                </label>
-                <button type="submit" class="primary">Yayınla</button>
-                <p id="publish-status" class="admin-status"></p>
-            </form>
+                <form id="publish-form">
+                    <input type="hidden" name="slug" id="admin-slug">
+                    <input type="hidden" name="published" id="admin-published" value="true">
+                    <div class="admin-grid">
+                        <label>
+                            Başlık *
+                            <input type="text" name="title" required>
+                        </label>
+                        <label>
+                            Yayın Tarihi *
+                            <input type="date" name="date" required>
+                        </label>
+                    </div>
+                    <label>
+                        Kısa Açıklama *
+                        <textarea name="description" rows="3" required></textarea>
+                    </label>
+                    <label>
+                        Etiketler (virgülle ayırın)
+                        <input type="text" name="tags" placeholder="strateji, otomasyon">
+                    </label>
+                    <label>
+                        Kapak Görseli
+                        <input type="file" name="coverImage" accept="image/*">
+                    </label>
+                    <p id="cover-note" class="admin-hint" hidden>Mevcut kapak görseli korunur. Yeni görsel yüklerseniz üzerine yazılır.</p>
+                    <label>
+                        İçerik (Markdown) *
+                        <textarea name="body" rows="12" required></textarea>
+                    </label>
+                    <button type="submit" class="primary" id="publish-submit">Yayınla</button>
+                    <p id="publish-status" class="admin-status"></p>
+                </form>
+            </section>
+
+            <section class="admin-card" id="posts-card" data-admin-panel="posts" hidden>
+                <h2>Makalelerim</h2>
+                <p class="admin-status" id="posts-status"></p>
+                <div class="admin-table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Tarih</th>
+                                <th>Etiketler</th>
+                                <th>Durum</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="posts-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
         </section>
     </div>
 

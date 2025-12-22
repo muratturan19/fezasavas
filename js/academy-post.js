@@ -22,7 +22,13 @@ const parseFrontmatter = (markdown) => {
         if (!key || rest.length === 0) return;
         currentKey = key.trim();
         const value = rest.join(':').trim().replace(/^"|"$/g, '');
-        data[currentKey] = value;
+        if (value === 'true') {
+            data[currentKey] = true;
+        } else if (value === 'false') {
+            data[currentKey] = false;
+        } else {
+            data[currentKey] = value;
+        }
     });
 
     return { data, content: match[2].trim() };
@@ -89,6 +95,14 @@ const loadArticle = async () => {
         }
         const markdown = await response.text();
         const { data, content } = parseFrontmatter(markdown);
+        if (data.published === false) {
+            const contentEl = document.getElementById('article-content');
+            if (contentEl) {
+                contentEl.textContent = 'Makale bulunamadı.';
+            }
+            document.title = 'Makale bulunamadı - Feza Savaş';
+            return;
+        }
         renderArticle(data, content);
     } catch (error) {
         const contentEl = document.getElementById('article-content');

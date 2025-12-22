@@ -42,9 +42,39 @@ body {
     margin-bottom: 24px;
 }
 
+.admin-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
 .admin-card h2 {
     margin-bottom: 16px;
     color: var(--primary);
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.admin-tab {
+    border: 1px solid #e0d6dc;
+    background: #fff;
+    color: var(--text-dark);
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.admin-tab.is-active {
+    background: var(--primary);
+    color: #fff;
+    border-color: transparent;
 }
 
 .admin-card form {
@@ -86,6 +116,35 @@ body {
     cursor: pointer;
 }
 
+.secondary {
+    background: #f6eff3;
+    border: 1px solid #e0d6dc;
+    color: var(--text-dark);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.danger {
+    background: #fbeaea;
+    border: 1px solid #f2bcbc;
+    color: #b12323;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.link-button {
+    border: none;
+    background: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 13px;
+    padding: 0;
+}
+
 .admin-status {
     font-size: 13px;
     color: var(--text-light);
@@ -104,8 +163,71 @@ body {
     color: var(--text-light);
 }
 
+.admin-table-wrapper {
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.admin-table th,
+.admin-table td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f0e8ed;
+    vertical-align: top;
+}
+
+.admin-table th {
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.admin-badge.is-live {
+    background: #e8f6ee;
+    color: #1f8f4e;
+}
+
+.admin-badge.is-draft {
+    background: #fdf5e6;
+    color: #b57b00;
+}
+
+.admin-muted {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
 @media (max-width: 720px) {
     .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-tabs {
         flex-direction: column;
         align-items: flex-start;
     }
