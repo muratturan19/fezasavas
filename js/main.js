@@ -19,9 +19,17 @@ const TRANSLATIONS = {
         'nav.delta': 'Delta Project',
         'nav.klinker': 'Clinker Export',
         'nav.pet': 'PET Bottle Export',
-        'footer.copyright': '© 2025 Feza Savaş - All rights reserved.',
+        'footer.copyright.short': '© 2025 Feza Savaş',
+        'footer.copyright.full': '© 2025 Feza Savaş - All rights reserved.',
         'footer.contact': 'Contact',
         'footer.admin': 'Admin Login',
+        'aria.languageSwitcher': 'Language options',
+        'alt.logo': 'Feza Savaş logo',
+        'alt.flag.tr': 'Turkish flag',
+        'alt.flag.en': 'United Kingdom flag',
+        'alt.flag.fr': 'French flag',
+        'alt.profile': 'Feza Savaş portrait',
+        'alt.academy.cover': 'Article cover image',
         'index.hero.title': 'For you, <span>with you</span>',
         'index.hero.subtitle': 'Your gateway from Türkiye to the world. We grow your business with professional consulting and reliable foreign trade solutions.',
         'index.about.title': 'Who is Feza Savaş?',
@@ -161,9 +169,17 @@ const TRANSLATIONS = {
         'nav.delta': 'Projet Delta',
         'nav.klinker': 'Exportation de clinker',
         'nav.pet': 'Exportation de bouteilles PET',
-        'footer.copyright': '© 2025 Feza Savaş - Tous droits réservés.',
+        'footer.copyright.short': '© 2025 Feza Savaş',
+        'footer.copyright.full': '© 2025 Feza Savaş - Tous droits réservés.',
         'footer.contact': 'Contact',
         'footer.admin': 'Connexion admin',
+        'aria.languageSwitcher': 'Options de langue',
+        'alt.logo': 'Logo Feza Savaş',
+        'alt.flag.tr': 'Drapeau turc',
+        'alt.flag.en': 'Drapeau du Royaume-Uni',
+        'alt.flag.fr': 'Drapeau français',
+        'alt.profile': 'Portrait de Feza Savaş',
+        'alt.academy.cover': 'Image de couverture de l’article',
         'index.hero.title': 'Pour vous, <span>avec vous</span>',
         'index.hero.subtitle': 'Votre passerelle de la Turquie vers le monde. Nous développons votre entreprise grâce au conseil professionnel et à des solutions de commerce extérieur fiables.',
         'index.about.title': 'Qui est Feza Savaş ?',
@@ -297,11 +313,14 @@ const getStoredLanguage = () => {
     return SUPPORTED_LANGUAGES.includes(stored) ? stored : '';
 };
 
+const getCurrentLanguage = () => getStoredLanguage() || document.documentElement.lang || DEFAULT_LANGUAGE;
+
 const getBrowserLanguage = () => {
     const language = navigator.language || navigator.userLanguage || '';
     if (language.toLowerCase().startsWith('fr')) return 'fr';
     if (language.toLowerCase().startsWith('tr')) return 'tr';
-    return 'en';
+    if (language.toLowerCase().startsWith('en')) return 'en';
+    return '';
 };
 
 const getCountryLanguage = (countryCode) => {
@@ -323,20 +342,38 @@ const fetchCountryLanguage = async () => {
 };
 
 const updateTextTranslations = (lang) => {
-    const elements = document.querySelectorAll('[data-i18n], [data-i18n-html]');
+    const elements = document.querySelectorAll(
+        '[data-i18n], [data-i18n-html], [data-i18n-alt], [data-i18n-aria-label]'
+    );
     elements.forEach((element) => {
         const key = element.dataset.i18n || element.dataset.i18nHtml;
-        if (!key) return;
+        if (key) {
+            if (!element.dataset.i18nDefault) {
+                element.dataset.i18nDefault = element.dataset.i18nHtml ? element.innerHTML : element.textContent;
+            }
 
-        if (!element.dataset.i18nDefault) {
-            element.dataset.i18nDefault = element.dataset.i18nHtml ? element.innerHTML : element.textContent;
+            const translation = TRANSLATIONS[lang]?.[key];
+            if (element.dataset.i18nHtml !== undefined) {
+                element.innerHTML = translation || element.dataset.i18nDefault;
+            } else {
+                element.textContent = translation || element.dataset.i18nDefault;
+            }
         }
 
-        const translation = TRANSLATIONS[lang]?.[key];
-        if (element.dataset.i18nHtml !== undefined) {
-            element.innerHTML = translation || element.dataset.i18nDefault;
-        } else {
-            element.textContent = translation || element.dataset.i18nDefault;
+        if (element.dataset.i18nAlt) {
+            if (!element.dataset.i18nAltDefault) {
+                element.dataset.i18nAltDefault = element.getAttribute('alt') || '';
+            }
+            const altTranslation = TRANSLATIONS[lang]?.[element.dataset.i18nAlt];
+            element.setAttribute('alt', altTranslation || element.dataset.i18nAltDefault);
+        }
+
+        if (element.dataset.i18nAriaLabel) {
+            if (!element.dataset.i18nAriaLabelDefault) {
+                element.dataset.i18nAriaLabelDefault = element.getAttribute('aria-label') || '';
+            }
+            const ariaTranslation = TRANSLATIONS[lang]?.[element.dataset.i18nAriaLabel];
+            element.setAttribute('aria-label', ariaTranslation || element.dataset.i18nAriaLabelDefault);
         }
     });
 };
@@ -401,14 +438,27 @@ const initLanguageSwitcher = () => {
         return;
     }
 
-    const fallbackLanguage = getBrowserLanguage();
-    setLanguage(fallbackLanguage || DEFAULT_LANGUAGE, { persist: false });
+    const browserLanguage = getBrowserLanguage();
+    setLanguage(browserLanguage || DEFAULT_LANGUAGE, { persist: false });
 
     fetchCountryLanguage().then((countryLanguage) => {
-        if (!getStoredLanguage() && countryLanguage && countryLanguage !== fallbackLanguage) {
+        if (!getStoredLanguage() && !browserLanguage && countryLanguage) {
             setLanguage(countryLanguage);
         }
     });
+};
+
+const getLocale = (language) => {
+    if (language === 'fr') return 'fr-FR';
+    if (language === 'en') return 'en-US';
+    return 'tr-TR';
+};
+
+window.fezaI18n = {
+    LANGUAGE_STORAGE_KEY,
+    LANGUAGE_EVENT,
+    getCurrentLanguage,
+    getLocale
 };
 
 // Sayfa yüklendiğinde çalışacak fonksiyonlar

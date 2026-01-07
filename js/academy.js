@@ -1,11 +1,18 @@
-const LANGUAGE_STORAGE_KEY = 'fezaLanguage';
-const LANGUAGE_EVENT = 'feza:languagechange';
+const fezaI18n = window.fezaI18n || {};
+const LANGUAGE_STORAGE_KEY = fezaI18n.LANGUAGE_STORAGE_KEY || 'fezaLanguage';
+const LANGUAGE_EVENT = fezaI18n.LANGUAGE_EVENT || 'feza:languagechange';
 
 const academyGrid = document.getElementById('academy-grid');
 const academyEmpty = document.getElementById('academy-empty');
 const tagFilters = document.getElementById('tag-filters');
 
 const UI_TRANSLATIONS = {
+    tr: {
+        all: 'Tümü',
+        readMore: 'Oku →',
+        loadError: 'Akademi listesi yüklenemedi.',
+        empty: 'Henüz yayınlanmış bir akademi yazısı bulunmuyor.'
+    },
     en: {
         all: 'All',
         readMore: 'Read →',
@@ -20,17 +27,17 @@ const UI_TRANSLATIONS = {
     }
 };
 
-const getCurrentLanguage = () => {
+const getCurrentLanguage = fezaI18n.getCurrentLanguage || (() => {
     const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (stored) return stored;
     return document.documentElement.lang || 'tr';
-};
+});
 
-const getLocale = (language) => {
+const getLocale = fezaI18n.getLocale || ((language) => {
     if (language === 'fr') return 'fr-FR';
     if (language === 'en') return 'en-US';
     return 'tr-TR';
-};
+});
 
 const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
 

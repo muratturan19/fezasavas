@@ -1,7 +1,12 @@
-const LANGUAGE_STORAGE_KEY = 'fezaLanguage';
-const LANGUAGE_EVENT = 'feza:languagechange';
+const fezaI18n = window.fezaI18n || {};
+const LANGUAGE_STORAGE_KEY = fezaI18n.LANGUAGE_STORAGE_KEY || 'fezaLanguage';
+const LANGUAGE_EVENT = fezaI18n.LANGUAGE_EVENT || 'feza:languagechange';
 
 const UI_TRANSLATIONS = {
+    tr: {
+        notFound: 'Makale bulunamadı.',
+        loadError: 'Makale yüklenemedi.'
+    },
     en: {
         notFound: 'Article not found.',
         loadError: 'Unable to load the article.'
@@ -15,17 +20,17 @@ const UI_TRANSLATIONS = {
 const articleRoot = document.querySelector('[data-article-slug]');
 const slug = articleRoot?.dataset.articleSlug;
 
-const getCurrentLanguage = () => {
+const getCurrentLanguage = fezaI18n.getCurrentLanguage || (() => {
     const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
     if (stored) return stored;
     return document.documentElement.lang || 'tr';
-};
+});
 
-const getLocale = (language) => {
+const getLocale = fezaI18n.getLocale || ((language) => {
     if (language === 'fr') return 'fr-FR';
     if (language === 'en') return 'en-US';
     return 'tr-TR';
-};
+});
 
 const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
 
