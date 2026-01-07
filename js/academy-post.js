@@ -1,5 +1,33 @@
+const LANGUAGE_STORAGE_KEY = 'fezaLanguage';
+const LANGUAGE_EVENT = 'feza:languagechange';
+
+const UI_TRANSLATIONS = {
+    en: {
+        notFound: 'Article not found.',
+        loadError: 'Unable to load the article.'
+    },
+    fr: {
+        notFound: 'Article introuvable.',
+        loadError: 'Impossible de charger l’article.'
+    }
+};
+
 const articleRoot = document.querySelector('[data-article-slug]');
 const slug = articleRoot?.dataset.articleSlug;
+
+const getCurrentLanguage = () => {
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored) return stored;
+    return document.documentElement.lang || 'tr';
+};
+
+const getLocale = (language) => {
+    if (language === 'fr') return 'fr-FR';
+    if (language === 'en') return 'en-US';
+    return 'tr-TR';
+};
+
+const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
 
 const parseFrontmatter = (markdown) => {
     const match = markdown.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -34,17 +62,19 @@ const parseFrontmatter = (markdown) => {
     return { data, content: match[2].trim() };
 };
 
-const formatDate = (dateString) => {
+const formatDate = (dateString, language) => {
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) {
         return dateString;
     }
-    return date.toLocaleDateString('tr-TR', {
+    return date.toLocaleDateString(getLocale(language), {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
 };
+
+let cachedFrontmatter = null;
 
 const renderArticle = (frontmatter, markdown) => {
     const title = document.getElementById('article-title');
@@ -56,7 +86,7 @@ const renderArticle = (frontmatter, markdown) => {
 
     if (title && frontmatter.title) title.textContent = frontmatter.title;
     if (description && frontmatter.description) description.textContent = frontmatter.description;
-    if (dateEl && frontmatter.date) dateEl.textContent = formatDate(frontmatter.date);
+    if (dateEl && frontmatter.date) dateEl.textContent = formatDate(frontmatter.date, getCurrentLanguage());
 
     if (tagsEl && Array.isArray(frontmatter.tags)) {
         tagsEl.innerHTML = '';
@@ -86,6 +116,14 @@ const renderArticle = (frontmatter, markdown) => {
     }
 };
 
+const updateDate = () => {
+    if (!cachedFrontmatter) return;
+    const dateEl = document.getElementById('article-date');
+    if (dateEl && cachedFrontmatter.date) {
+        dateEl.textContent = formatDate(cachedFrontmatter.date, getCurrentLanguage());
+    }
+};
+
 const loadArticle = async () => {
     if (!slug) return;
     try {
@@ -98,18 +136,23 @@ const loadArticle = async () => {
         if (data.published === false) {
             const contentEl = document.getElementById('article-content');
             if (contentEl) {
-                contentEl.textContent = 'Makale bulunamadı.';
+                contentEl.textContent = getTranslations(getCurrentLanguage()).notFound;
             }
-            document.title = 'Makale bulunamadı - Feza Savaş';
+            document.title = `${getTranslations(getCurrentLanguage()).notFound} - Feza Savaş`;
             return;
         }
+        cachedFrontmatter = data;
         renderArticle(data, content);
     } catch (error) {
         const contentEl = document.getElementById('article-content');
         if (contentEl) {
-            contentEl.textContent = 'Makale yüklenemedi.';
+            contentEl.textContent = getTranslations(getCurrentLanguage()).loadError;
         }
     }
 };
+
+if (document) {
+    document.addEventListener(LANGUAGE_EVENT, updateDate);
+}
 
 loadArticle();

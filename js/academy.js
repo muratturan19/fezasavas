@@ -1,13 +1,45 @@
+const LANGUAGE_STORAGE_KEY = 'fezaLanguage';
+const LANGUAGE_EVENT = 'feza:languagechange';
+
 const academyGrid = document.getElementById('academy-grid');
 const academyEmpty = document.getElementById('academy-empty');
 const tagFilters = document.getElementById('tag-filters');
 
-const formatDate = (dateString) => {
+const UI_TRANSLATIONS = {
+    en: {
+        all: 'All',
+        readMore: 'Read →',
+        loadError: 'Unable to load the academy list.',
+        empty: 'No academy articles have been published yet.'
+    },
+    fr: {
+        all: 'Tous',
+        readMore: 'Lire →',
+        loadError: 'Impossible de charger la liste de l’académie.',
+        empty: 'Aucun article de l’académie n’a encore été publié.'
+    }
+};
+
+const getCurrentLanguage = () => {
+    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (stored) return stored;
+    return document.documentElement.lang || 'tr';
+};
+
+const getLocale = (language) => {
+    if (language === 'fr') return 'fr-FR';
+    if (language === 'en') return 'en-US';
+    return 'tr-TR';
+};
+
+const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
+
+const formatDate = (dateString, language) => {
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) {
         return dateString;
     }
-    return date.toLocaleDateString('tr-TR', {
+    return date.toLocaleDateString(getLocale(language), {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -21,10 +53,11 @@ const createTagChip = (tag) => {
     return chip;
 };
 
-const renderCards = (posts) => {
+const renderCards = (posts, language) => {
     academyGrid.innerHTML = '';
     if (!posts.length) {
         academyEmpty.hidden = false;
+        academyEmpty.textContent = getTranslations(language).empty;
         return;
     }
 
@@ -47,9 +80,9 @@ const renderCards = (posts) => {
                 <p class="academy-card-description">${post.description || ''}</p>
                 <div class="academy-tags">${tagsMarkup}</div>
                 <div class="academy-card-meta">
-                    <span>${formatDate(post.date)}</span>
+                    <span>${formatDate(post.date, language)}</span>
                 </div>
-                <a class="academy-card-link" href="./${post.slug}.html">Oku →</a>
+                <a class="academy-card-link" href="./${post.slug}.html">${getTranslations(language).readMore}</a>
             </div>
         `;
 
@@ -57,7 +90,7 @@ const renderCards = (posts) => {
     });
 };
 
-const renderFilters = (posts, onFilter) => {
+const renderFilters = (posts, onFilter, language) => {
     const tags = new Set();
     posts.forEach((post) => (post.tags || []).forEach((tag) => tags.add(tag)));
 
@@ -65,7 +98,7 @@ const renderFilters = (posts, onFilter) => {
     const allButton = document.createElement('button');
     allButton.type = 'button';
     allButton.className = 'tag-filter is-active';
-    allButton.textContent = 'Tümü';
+    allButton.textContent = getTranslations(language).all;
     allButton.addEventListener('click', () => onFilter(''));
     tagFilters.appendChild(allButton);
 
@@ -86,6 +119,23 @@ const renderFilters = (posts, onFilter) => {
     });
 };
 
+let cachedPosts = [];
+
+const renderAcademy = (posts) => {
+    const language = getCurrentLanguage();
+    const handleFilter = (tag) => {
+        if (!tag) {
+            renderCards(posts, language);
+            return;
+        }
+        const filtered = posts.filter((post) => (post.tags || []).includes(tag));
+        renderCards(filtered, language);
+    };
+
+    renderFilters(posts, handleFilter, language);
+    renderCards(posts, language);
+};
+
 const loadAcademy = async () => {
     try {
         const response = await fetch('../content/academy/index.json');
@@ -94,25 +144,27 @@ const loadAcademy = async () => {
         }
         const posts = await response.json();
         const visiblePosts = posts.filter((post) => post.published !== false);
-        const sortedPosts = visiblePosts
+        cachedPosts = visiblePosts
             .slice()
             .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        const handleFilter = (tag) => {
-            if (!tag) {
-                renderCards(sortedPosts);
-                return;
-            }
-            const filtered = sortedPosts.filter((post) => (post.tags || []).includes(tag));
-            renderCards(filtered);
-        };
-
-        renderFilters(sortedPosts, handleFilter);
-        renderCards(sortedPosts);
+        renderAcademy(cachedPosts);
     } catch (error) {
         academyEmpty.hidden = false;
-        academyEmpty.textContent = 'Akademi listesi yüklenemedi.';
+        academyEmpty.textContent = getTranslations(getCurrentLanguage()).loadError;
     }
 };
+
+if (document) {
+    document.addEventListener(LANGUAGE_EVENT, () => {
+        if (cachedPosts.length) {
+            renderAcademy(cachedPosts);
+            return;
+        }
+        if (academyEmpty && !academyEmpty.hidden) {
+            academyEmpty.textContent = getTranslations(getCurrentLanguage()).empty;
+        }
+    });
+}
 
 loadAcademy();
