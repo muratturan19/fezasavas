@@ -21,40 +21,54 @@
                     <img src="../images/logo.png" alt="Feza Savaş Logo">
                 </div>
                 <h1>Feza Savaş</h1>
-                <span>Danışmanlık & Dış Ticaret</span>
+                <span data-i18n="logo.tagline">Danışmanlık & Dış Ticaret</span>
+            </div>
+            <div class="site-language-switcher" data-language-switcher role="group" aria-label="Dil seçenekleri">
+                <button class="language-btn" type="button" data-lang="tr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-tr.svg" alt="Türkiye bayrağı">
+                    <span class="lang-label">TR</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
+                    <img class="flag" src="../images/flag-gb.svg" alt="Birleşik Krallık bayrağı">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-fr.svg" alt="Fransa bayrağı">
+                    <span class="lang-label">FR</span>
+                </button>
             </div>
 
             <nav>
                 <div class="nav-section">
-                    <div class="nav-title">Kurumsal</div>
+                    <div class="nav-title" data-i18n="nav.corporate">Kurumsal</div>
                     <ul class="nav-menu">
-                        <li><a href="../index.html">Ana Sayfa</a></li>
-                        <li><a href="hakkimizda.html" class="active">Hakkımızda</a></li>
-                        <li><a href="../akademi/">Akademi</a></li>
+                        <li><a href="../index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                        <li><a href="hakkimizda.html" class="active" data-i18n="nav.about">Hakkımızda</a></li>
+                        <li><a href="../akademi/" data-i18n="nav.academy">Akademi</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <div class="nav-title" data-i18n="nav.work">İşler / Çalışmalarımız</div>
                     <ul class="nav-menu">
-                        <li><a href="danismanlik.html">Danışmanlıklarımız</a></li>
-                        <li><a href="ticaret.html">Dünya ile Ticaret</a></li>
+                        <li><a href="danismanlik.html" data-i18n="nav.consulting">Danışmanlıklarımız</a></li>
+                        <li><a href="ticaret.html" data-i18n="nav.trade">Dünya ile Ticaret</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">Projelerimiz</div>
+                    <div class="nav-title" data-i18n="nav.projects">Projelerimiz</div>
                     <ul class="nav-menu">
-                        <li><a href="delta-proje.html">Delta Proje</a></li>
-                        <li><a href="klinker.html">Klinker İhracatı</a></li>
-                        <li><a href="pet-sise.html">Pet Şişe İhracatı</a></li>
+                        <li><a href="delta-proje.html" data-i18n="nav.delta">Delta Proje</a></li>
+                        <li><a href="klinker.html" data-i18n="nav.klinker">Klinker İhracatı</a></li>
+                        <li><a href="pet-sise.html" data-i18n="nav.pet">Pet Şişe İhracatı</a></li>
                     </ul>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <p>© 2025 Feza Savaş</p>
-                <a class="sidebar-admin" href="../admin/index.html">Admin Girişi</a>
+                <p data-i18n="footer.copyright">© 2025 Feza Savaş</p>
+                <a class="sidebar-admin" href="../admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
             </div>
         </aside>
 
@@ -63,25 +77,11 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <h2>Feza Savaş <span>Kimdir?</span></h2>
-                    <p class="hero-subtitle">
+                    <h2 data-i18n-html="about.hero.title">Feza Savaş <span>Kimdir?</span></h2>
+                    <p class="hero-subtitle" data-i18n="about.hero.subtitle">
                         Türkiye'den dünyaya uzanan ticaret köprüsü. Güven, deneyim ve sürdürülebilir başarı.
                     </p>
                     <div class="hero-line"></div>
-                </div>
-                <div class="bio-language-switcher" role="tablist" aria-label="Dil seçimi">
-                    <button class="language-btn is-active" type="button" data-lang="tr" aria-pressed="true">
-                        <img class="flag" src="../images/flag-tr.svg" alt="Türkiye bayrağı">
-                        <span class="lang-label">TR</span>
-                    </button>
-                    <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
-                        <img class="flag" src="../images/flag-gb.svg" alt="Birleşik Krallık bayrağı">
-                        <span class="lang-label">EN</span>
-                    </button>
-                    <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
-                        <img class="flag" src="../images/flag-fr.svg" alt="Fransa bayrağı">
-                        <span class="lang-label">FR</span>
-                    </button>
                 </div>
             </section>
 
@@ -135,7 +135,11 @@
 
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="../index.html#iletisim">İletişim</a> | <a href="../admin/index.html">Admin Girişi</a></p>
+                <p>
+                    <span data-i18n="footer.copyright">© 2025 Feza Savaş - Tüm hakları saklıdır.</span> |
+                    <a href="../index.html#iletisim" data-i18n="footer.contact">İletişim</a> |
+                    <a href="../admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
+                </p>
             </footer>
         </main>
     </div>

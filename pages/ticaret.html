@@ -21,33 +21,47 @@
                     <img src="../images/logo.png" alt="Feza Savaş Logo">
                 </div>
                 <h1>Feza Savaş</h1>
-                <span>Danışmanlık & Dış Ticaret</span>
+                <span data-i18n="logo.tagline">Danışmanlık & Dış Ticaret</span>
+            </div>
+            <div class="site-language-switcher" data-language-switcher role="group" aria-label="Dil seçenekleri">
+                <button class="language-btn" type="button" data-lang="tr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-tr.svg" alt="Türkiye bayrağı">
+                    <span class="lang-label">TR</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
+                    <img class="flag" src="../images/flag-gb.svg" alt="Birleşik Krallık bayrağı">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-fr.svg" alt="Fransa bayrağı">
+                    <span class="lang-label">FR</span>
+                </button>
             </div>
 
             <nav>
                 <div class="nav-section">
-                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <div class="nav-title" data-i18n="nav.work">İşler / Çalışmalarımız</div>
                     <ul class="nav-menu">
-                        <li><a href="../index.html">Ana Sayfa</a></li>
-                        <li><a href="../akademi/">Akademi</a></li>
-                        <li><a href="danismanlik.html">Danışmanlıklarımız</a></li>
-                        <li><a href="ticaret.html" class="active">Dünya ile Ticaret</a></li>
+                        <li><a href="../index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                        <li><a href="../akademi/" data-i18n="nav.academy">Akademi</a></li>
+                        <li><a href="danismanlik.html" data-i18n="nav.consulting">Danışmanlıklarımız</a></li>
+                        <li><a href="ticaret.html" class="active" data-i18n="nav.trade">Dünya ile Ticaret</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">Projelerimiz</div>
+                    <div class="nav-title" data-i18n="nav.projects">Projelerimiz</div>
                     <ul class="nav-menu">
-                        <li><a href="delta-proje.html">Delta Proje</a></li>
-                        <li><a href="klinker.html">Klinker İhracatı</a></li>
-                        <li><a href="pet-sise.html">Pet Şişe İhracatı</a></li>
+                        <li><a href="delta-proje.html" data-i18n="nav.delta">Delta Proje</a></li>
+                        <li><a href="klinker.html" data-i18n="nav.klinker">Klinker İhracatı</a></li>
+                        <li><a href="pet-sise.html" data-i18n="nav.pet">Pet Şişe İhracatı</a></li>
                     </ul>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <p>© 2025 Feza Savaş</p>
-                <a class="sidebar-admin" href="../admin/index.html">Admin Girişi</a>
+                <p data-i18n="footer.copyright">© 2025 Feza Savaş</p>
+                <a class="sidebar-admin" href="../admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
             </div>
         </aside>
 
@@ -56,8 +70,8 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <h2>Dünya ile <span>Ticaret</span></h2>
-                    <p class="hero-subtitle">
+                    <h2 data-i18n-html="trade.hero.title">Dünya ile <span>Ticaret</span></h2>
+                    <p class="hero-subtitle" data-i18n="trade.hero.subtitle">
                         Kapsamlı ticari hizmetler ve dış ticaret çözümleri ile global pazarlara açılın.
                     </p>
                     <div class="hero-line"></div>
@@ -66,35 +80,39 @@
 
             <!-- Content Section -->
             <section class="content-section">
-                <h2>Ticaret Hizmetlerimiz</h2>
-                <p>İthalat, ihracat ve iç ticaret alanlarında geniş bir yelpazede hizmet sunuyoruz. Müşterilerimize en kaliteli ürünleri en uygun koşullarda ulaştırıyoruz. Uluslararası pazarlarda güvenilir ortağınız olarak, ticari başarınız için çalışıyoruz.</p>
+                <h2 data-i18n="trade.section.title">Ticaret Hizmetlerimiz</h2>
+                <p data-i18n="trade.section.intro">İthalat, ihracat ve iç ticaret alanlarında geniş bir yelpazede hizmet sunuyoruz. Müşterilerimize en kaliteli ürünleri en uygun koşullarda ulaştırıyoruz. Uluslararası pazarlarda güvenilir ortağınız olarak, ticari başarınız için çalışıyoruz.</p>
 
-                <h3>Ticaret Alanlarımız</h3>
+                <h3 data-i18n="trade.section.areas.title">Ticaret Alanlarımız</h3>
                 <ul>
-                    <li>İthalat ve İhracat işlemleri</li>
-                    <li>Toptan Ticaret ve dağıtım</li>
-                    <li>Dış Ticaret Danışmanlığı</li>
-                    <li>Lojistik Çözümleri ve taşımacılık</li>
-                    <li>Gümrük İşlemleri ve mevzuat danışmanlığı</li>
-                    <li>Pazar araştırması ve analiz</li>
+                    <li data-i18n="trade.section.areas.item1">İthalat ve İhracat işlemleri</li>
+                    <li data-i18n="trade.section.areas.item2">Toptan Ticaret ve dağıtım</li>
+                    <li data-i18n="trade.section.areas.item3">Dış Ticaret Danışmanlığı</li>
+                    <li data-i18n="trade.section.areas.item4">Lojistik Çözümleri ve taşımacılık</li>
+                    <li data-i18n="trade.section.areas.item5">Gümrük İşlemleri ve mevzuat danışmanlığı</li>
+                    <li data-i18n="trade.section.areas.item6">Pazar araştırması ve analiz</li>
                 </ul>
 
-                <h3>Avantajlarımız</h3>
+                <h3 data-i18n="trade.section.advantages.title">Avantajlarımız</h3>
                 <ul>
-                    <li>Geniş tedarikçi ağı ve güvenilir iş ortakları</li>
-                    <li>Rekabetçi fiyatlar ve esnek ödeme koşulları</li>
-                    <li>Hızlı ve güvenli teslimat</li>
-                    <li>Kalite garantisi ve ürün takibi</li>
-                    <li>Deneyimli kadro ve profesyonel hizmet</li>
+                    <li data-i18n="trade.section.advantages.item1">Geniş tedarikçi ağı ve güvenilir iş ortakları</li>
+                    <li data-i18n="trade.section.advantages.item2">Rekabetçi fiyatlar ve esnek ödeme koşulları</li>
+                    <li data-i18n="trade.section.advantages.item3">Hızlı ve güvenli teslimat</li>
+                    <li data-i18n="trade.section.advantages.item4">Kalite garantisi ve ürün takibi</li>
+                    <li data-i18n="trade.section.advantages.item5">Deneyimli kadro ve profesyonel hizmet</li>
                 </ul>
 
-                <h3>İhracat Deneyimimiz</h3>
-                <p>Yılların verdiği tecrübe ile uluslararası pazarlarda başarılı projeler gerçekleştiriyoruz. Klinker ve PET şişe ihracatımızda edindiğimiz deneyim ile müşterilerimize güvenilir ve kaliteli hizmet sunuyoruz.</p>
+                <h3 data-i18n="trade.section.experience.title">İhracat Deneyimimiz</h3>
+                <p data-i18n="trade.section.experience.desc">Yılların verdiği tecrübe ile uluslararası pazarlarda başarılı projeler gerçekleştiriyoruz. Klinker ve PET şişe ihracatımızda edindiğimiz deneyim ile müşterilerimize güvenilir ve kaliteli hizmet sunuyoruz.</p>
             </section>
 
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="../index.html#iletisim">İletişim</a> | <a href="../admin/index.html">Admin Girişi</a></p>
+                <p>
+                    <span data-i18n="footer.copyright">© 2025 Feza Savaş - Tüm hakları saklıdır.</span> |
+                    <a href="../index.html#iletisim" data-i18n="footer.contact">İletişim</a> |
+                    <a href="../admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
+                </p>
             </footer>
         </main>
     </div>

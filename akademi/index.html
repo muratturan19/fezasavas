@@ -20,48 +20,62 @@
                     <img src="../images/logo.png" alt="Feza Savaş Logo">
                 </div>
                 <h1>Feza Savaş</h1>
-                <span>Danışmanlık & Dış Ticaret</span>
+                <span data-i18n="logo.tagline">Danışmanlık & Dış Ticaret</span>
+            </div>
+            <div class="site-language-switcher" data-language-switcher role="group" aria-label="Dil seçenekleri">
+                <button class="language-btn" type="button" data-lang="tr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-tr.svg" alt="Türkiye bayrağı">
+                    <span class="lang-label">TR</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
+                    <img class="flag" src="../images/flag-gb.svg" alt="Birleşik Krallık bayrağı">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
+                    <img class="flag" src="../images/flag-fr.svg" alt="Fransa bayrağı">
+                    <span class="lang-label">FR</span>
+                </button>
             </div>
 
             <nav>
                 <div class="nav-section">
-                    <div class="nav-title">Kurumsal</div>
+                    <div class="nav-title" data-i18n="nav.corporate">Kurumsal</div>
                     <ul class="nav-menu">
-                        <li><a href="../index.html">Ana Sayfa</a></li>
-                        <li><a href="../pages/hakkimizda.html">Hakkımızda</a></li>
-                        <li><a href="./" class="active">Akademi</a></li>
+                        <li><a href="../index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                        <li><a href="../pages/hakkimizda.html" data-i18n="nav.about">Hakkımızda</a></li>
+                        <li><a href="./" class="active" data-i18n="nav.academy">Akademi</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <div class="nav-title" data-i18n="nav.work">İşler / Çalışmalarımız</div>
                     <ul class="nav-menu">
-                        <li><a href="../pages/danismanlik.html">Danışmanlıklarımız</a></li>
-                        <li><a href="../pages/ticaret.html">Dünya ile Ticaret</a></li>
+                        <li><a href="../pages/danismanlik.html" data-i18n="nav.consulting">Danışmanlıklarımız</a></li>
+                        <li><a href="../pages/ticaret.html" data-i18n="nav.trade">Dünya ile Ticaret</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">Projelerimiz</div>
+                    <div class="nav-title" data-i18n="nav.projects">Projelerimiz</div>
                     <ul class="nav-menu">
-                        <li><a href="../pages/delta-proje.html">Delta Proje</a></li>
-                        <li><a href="../pages/klinker.html">Klinker İhracatı</a></li>
-                        <li><a href="../pages/pet-sise.html">Pet Şişe İhracatı</a></li>
+                        <li><a href="../pages/delta-proje.html" data-i18n="nav.delta">Delta Proje</a></li>
+                        <li><a href="../pages/klinker.html" data-i18n="nav.klinker">Klinker İhracatı</a></li>
+                        <li><a href="../pages/pet-sise.html" data-i18n="nav.pet">Pet Şişe İhracatı</a></li>
                     </ul>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <p>© 2025 Feza Savaş</p>
-                <a class="sidebar-admin" href="../admin/index.html">Admin Girişi</a>
+                <p data-i18n="footer.copyright">© 2025 Feza Savaş</p>
+                <a class="sidebar-admin" href="../admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
             </div>
         </aside>
 
         <main class="main-content">
             <section class="hero">
                 <div class="hero-content">
-                    <h2>Akademi <span>Yazıları</span></h2>
-                    <p class="hero-subtitle">
+                    <h2 data-i18n-html="academy.hero.title">Akademi <span>Yazıları</span></h2>
+                    <p class="hero-subtitle" data-i18n="academy.hero.subtitle">
                         Feza Bey'in uzmanlık notları, strateji paylaşımları ve saha deneyimleri burada.
                     </p>
                     <div class="hero-line"></div>
@@ -71,18 +85,19 @@
             <section class="content-section">
                 <div class="section-header academy-header">
                     <div>
-                        <div class="section-label">Makaleler</div>
-                        <h3 class="section-title">Güncel Yazılar</h3>
+                        <div class="section-label" data-i18n="academy.section.label">Makaleler</div>
+                        <h3 class="section-title" data-i18n="academy.section.title">Güncel Yazılar</h3>
                     </div>
                     <div class="tag-filters" id="tag-filters"></div>
                 </div>
 
                 <div id="academy-grid" class="academy-grid"></div>
-                <div id="academy-empty" class="academy-empty" hidden>Henüz yayınlanmış bir akademi yazısı bulunmuyor.</div>
+                <div id="academy-empty" class="academy-empty" hidden data-i18n="academy.empty">Henüz yayınlanmış bir akademi yazısı bulunmuyor.</div>
             </section>
         </main>
     </div>
 
+    <script src="../js/main.js"></script>
     <script src="../js/academy.js"></script>
 </body>
 </html>

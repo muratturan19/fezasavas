@@ -20,40 +20,54 @@
                     <img src="images/logo.png" alt="Feza Savaş Logo">
                 </div>
                 <h1>Feza Savaş</h1>
-                <span>Danışmanlık & Dış Ticaret</span>
+                <span data-i18n="logo.tagline">Danışmanlık & Dış Ticaret</span>
+            </div>
+            <div class="site-language-switcher" data-language-switcher role="group" aria-label="Dil seçenekleri">
+                <button class="language-btn" type="button" data-lang="tr" aria-pressed="false">
+                    <img class="flag" src="images/flag-tr.svg" alt="Türkiye bayrağı">
+                    <span class="lang-label">TR</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="en" aria-pressed="false">
+                    <img class="flag" src="images/flag-gb.svg" alt="Birleşik Krallık bayrağı">
+                    <span class="lang-label">EN</span>
+                </button>
+                <button class="language-btn" type="button" data-lang="fr" aria-pressed="false">
+                    <img class="flag" src="images/flag-fr.svg" alt="Fransa bayrağı">
+                    <span class="lang-label">FR</span>
+                </button>
             </div>
 
             <nav>
                 <div class="nav-section">
-                    <div class="nav-title">Kurumsal</div>
+                    <div class="nav-title" data-i18n="nav.corporate">Kurumsal</div>
                     <ul class="nav-menu">
-                        <li><a href="index.html" class="active">Ana Sayfa</a></li>
-                        <li><a href="pages/hakkimizda.html">Hakkımızda</a></li>
-                        <li><a href="akademi/">Akademi</a></li>
+                        <li><a href="index.html" class="active" data-i18n="nav.home">Ana Sayfa</a></li>
+                        <li><a href="pages/hakkimizda.html" data-i18n="nav.about">Hakkımızda</a></li>
+                        <li><a href="akademi/" data-i18n="nav.academy">Akademi</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">İşler / Çalışmalarımız</div>
+                    <div class="nav-title" data-i18n="nav.work">İşler / Çalışmalarımız</div>
                     <ul class="nav-menu">
-                        <li><a href="pages/danismanlik.html">Danışmanlıklarımız</a></li>
-                        <li><a href="pages/ticaret.html">Dünya ile Ticaret</a></li>
+                        <li><a href="pages/danismanlik.html" data-i18n="nav.consulting">Danışmanlıklarımız</a></li>
+                        <li><a href="pages/ticaret.html" data-i18n="nav.trade">Dünya ile Ticaret</a></li>
                     </ul>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-title">Projelerimiz</div>
+                    <div class="nav-title" data-i18n="nav.projects">Projelerimiz</div>
                     <ul class="nav-menu">
-                        <li><a href="pages/delta-proje.html">Delta Proje</a></li>
-                        <li><a href="pages/klinker.html">Klinker İhracatı</a></li>
-                        <li><a href="pages/pet-sise.html">Pet Şişe İhracatı</a></li>
+                        <li><a href="pages/delta-proje.html" data-i18n="nav.delta">Delta Proje</a></li>
+                        <li><a href="pages/klinker.html" data-i18n="nav.klinker">Klinker İhracatı</a></li>
+                        <li><a href="pages/pet-sise.html" data-i18n="nav.pet">Pet Şişe İhracatı</a></li>
                     </ul>
                 </div>
             </nav>
 
             <div class="sidebar-footer">
-                <p>© 2025 Feza Savaş</p>
-                <a class="sidebar-admin" href="admin/index.html">Admin Girişi</a>
+                <p data-i18n="footer.copyright">© 2025 Feza Savaş</p>
+                <a class="sidebar-admin" href="admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
             </div>
         </aside>
 
@@ -62,8 +76,8 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <h2>Sizin için, <span>sizinle birlikte</span></h2>
-                    <p class="hero-subtitle">
+                    <h2 data-i18n-html="index.hero.title">Sizin için, <span>sizinle birlikte</span></h2>
+                    <p class="hero-subtitle" data-i18n="index.hero.subtitle">
                         Türkiye'den dünyaya açılan kapınız. Profesyonel danışmanlık ve güvenilir dış ticaret çözümleri ile işinizi büyütüyoruz.
                     </p>
                     <div class="hero-line"></div>
@@ -80,11 +94,11 @@
                         </svg>
                     </div>
                     <div class="about-content">
-                        <h3>Feza Savaş Kimdir?</h3>
-                        <p>25 yılı aşkın deneyimim; otomotiv sektöründe çok uluslu yapılarda üst düzey yöneticilik ve Türkiye'nin önde gelen kurumlarına danışmanlık ile şekillendi.</p>
-                        <p>Değişim dönemlerinde liderlik yapılanmalarını güçlendirme, karar süreçlerini sadeleştirme ve yönetici koçluğu alanlarında uzman bir bakış sunuyorum.</p>
+                        <h3 data-i18n="index.about.title">Feza Savaş Kimdir?</h3>
+                        <p data-i18n="index.about.desc1">25 yılı aşkın deneyimim; otomotiv sektöründe çok uluslu yapılarda üst düzey yöneticilik ve Türkiye'nin önde gelen kurumlarına danışmanlık ile şekillendi.</p>
+                        <p data-i18n="index.about.desc2">Değişim dönemlerinde liderlik yapılanmalarını güçlendirme, karar süreçlerini sadeleştirme ve yönetici koçluğu alanlarında uzman bir bakış sunuyorum.</p>
                         <span class="about-link">
-                            Daha Fazla Bilgi
+                            <span class="about-link-text" data-i18n="index.about.link">Daha Fazla Bilgi</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -96,8 +110,8 @@
             <!-- Services Section -->
             <section class="services" id="hizmetler">
                 <div class="section-header">
-                    <div class="section-label">Hizmetlerimiz</div>
-                    <h3 class="section-title">İşler / Çalışmalarımız</h3>
+                    <div class="section-label" data-i18n="index.services.label">Hizmetlerimiz</div>
+                    <h3 class="section-title" data-i18n="index.services.title">İşler / Çalışmalarımız</h3>
                 </div>
 
                 <div class="services-grid">
@@ -107,10 +121,10 @@
                                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                             </svg>
                         </div>
-                        <h3>Danışmanlıklarımız</h3>
-                        <p>Şirketlerin değişim dönemlerinde liderlik yapılanmalarını yeniden tasarlama, kurumsal karar süreçlerini sadeleştirme ve yönetici koçluğu alanlarında uzman danışmanlık hizmetleri sunuyoruz.</p>
+                        <h3 data-i18n="index.services.consulting.title">Danışmanlıklarımız</h3>
+                        <p data-i18n="index.services.consulting.desc">Şirketlerin değişim dönemlerinde liderlik yapılanmalarını yeniden tasarlama, kurumsal karar süreçlerini sadeleştirme ve yönetici koçluğu alanlarında uzman danışmanlık hizmetleri sunuyoruz.</p>
                         <span class="service-link">
-                            Detaylı Bilgi
+                            <span class="service-link-text" data-i18n="index.services.consulting.link">Detaylı Bilgi</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -124,10 +138,10 @@
                                 <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                             </svg>
                         </div>
-                        <h3>Dünya ile Ticaret</h3>
-                        <p>Türkiye'de yatırım yapmak isteyen yabancı yatırımcılara ve uluslararası alanlarda yatırım yapmak isteyen Türk yatırımcılara destek veriyoruz. Sanayi şirketlerine pazar araştırması ve işbirliği fırsatları sunuyoruz.</p>
+                        <h3 data-i18n="index.services.trade.title">Dünya ile Ticaret</h3>
+                        <p data-i18n="index.services.trade.desc">Türkiye'de yatırım yapmak isteyen yabancı yatırımcılara ve uluslararası alanlarda yatırım yapmak isteyen Türk yatırımcılara destek veriyoruz. Sanayi şirketlerine pazar araştırması ve işbirliği fırsatları sunuyoruz.</p>
                         <span class="service-link">
-                            Detaylı Bilgi
+                            <span class="service-link-text" data-i18n="index.services.trade.link">Detaylı Bilgi</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -139,36 +153,42 @@
             <!-- Projects Section -->
             <section class="projects" id="projeler">
                 <div class="section-header">
-                    <div class="section-label">Aktif Projeler</div>
-                    <h3 class="section-title">Projelerimiz</h3>
+                    <div class="section-label" data-i18n="index.projects.label">Aktif Projeler</div>
+                    <h3 class="section-title" data-i18n="index.projects.title">Projelerimiz</h3>
                 </div>
 
                 <div class="projects-grid">
                     <a href="pages/delta-proje.html" class="project-card" id="delta">
-                        <span class="project-badge">Danışmanlık</span>
-                        <h4>Delta Proje</h4>
-                        <p>Stratejik iş geliştirme ve operasyonel mükemmellik projesi</p>
+                        <span class="project-badge" data-i18n="index.projects.delta.badge">Danışmanlık</span>
+                        <h4 data-i18n="index.projects.delta.title">Delta Proje</h4>
+                        <p data-i18n="index.projects.delta.desc">Stratejik iş geliştirme ve operasyonel mükemmellik projesi</p>
                     </a>
 
                     <a href="pages/klinker.html" class="project-card" id="klinker">
-                        <span class="project-badge">İhracat</span>
-                        <h4>Klinker İhracatı</h4>
-                        <p>Kaliteli klinker ürünlerinin uluslararası pazarlara sunumu</p>
+                        <span class="project-badge" data-i18n="index.projects.klinker.badge">İhracat</span>
+                        <h4 data-i18n="index.projects.klinker.title">Klinker İhracatı</h4>
+                        <p data-i18n="index.projects.klinker.desc">Kaliteli klinker ürünlerinin uluslararası pazarlara sunumu</p>
                     </a>
 
                     <a href="pages/pet-sise.html" class="project-card" id="pet">
-                        <span class="project-badge">İhracat</span>
-                        <h4>Pet Şişe İhracatı</h4>
-                        <p>Pet şişe ve ambalaj ürünlerinin global dağıtımı</p>
+                        <span class="project-badge" data-i18n="index.projects.pet.badge">İhracat</span>
+                        <h4 data-i18n="index.projects.pet.title">Pet Şişe İhracatı</h4>
+                        <p data-i18n="index.projects.pet.desc">Pet şişe ve ambalaj ürünlerinin global dağıtımı</p>
                     </a>
                 </div>
             </section>
 
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2025 Feza Savaş - Tüm hakları saklıdır. | <a href="#iletisim">İletişim</a> | <a href="admin/index.html">Admin Girişi</a></p>
+                <p>
+                    <span data-i18n="footer.copyright">© 2025 Feza Savaş - Tüm hakları saklıdır.</span> |
+                    <a href="#iletisim" data-i18n="footer.contact">İletişim</a> |
+                    <a href="admin/index.html" data-i18n="footer.admin">Admin Girişi</a>
+                </p>
             </footer>
         </main>
     </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
