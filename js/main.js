@@ -474,7 +474,9 @@ const updateLanguageButtons = (lang) => {
 };
 
 const setLanguage = (lang, { persist = true } = {}) => {
+    console.log('setLanguage called with:', lang);
     if (!SUPPORTED_LANGUAGES.includes(lang)) {
+        console.error('Unsupported language:', lang);
         return;
     }
 
@@ -485,20 +487,28 @@ const setLanguage = (lang, { persist = true } = {}) => {
     document.documentElement.setAttribute('lang', lang);
     window.fezaLanguage = lang;
 
+    console.log('Updating UI for language:', lang);
     updateLanguageButtons(lang);
     updateTextTranslations(lang);
     updateLanguageBlocks(lang);
 
     document.dispatchEvent(new CustomEvent(LANGUAGE_EVENT, { detail: { language: lang } }));
+    console.log('Language changed to:', lang);
 };
 
 const initLanguageSwitcher = () => {
     const switchers = document.querySelectorAll('[data-language-switcher]');
+    console.log('Language switchers found:', switchers.length);
     if (!switchers.length) return;
 
     const buttons = document.querySelectorAll('[data-language-switcher] .language-btn[data-lang]');
+    console.log('Language buttons found:', buttons.length);
     buttons.forEach((button) => {
-        button.addEventListener('click', () => {
+        console.log('Adding listener to button:', button.dataset.lang);
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Button clicked:', button.dataset.lang);
             setLanguage(button.dataset.lang || DEFAULT_LANGUAGE);
         });
     });
