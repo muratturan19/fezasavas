@@ -544,6 +544,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Site dil seçimi
     initLanguageSwitcher();
+
+    // Contact form submission handler
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('.contact-submit');
+            const formStatus = document.getElementById('formStatus');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            const lang = getCurrentLanguage();
+            const sendingText = TRANSLATIONS[lang]?.['contact.form.sending'] || 'Gönderiliyor...';
+            submitBtn.innerHTML = `<span>${sendingText}</span>`;
+
+            // Get form data
+            const formData = new FormData(this);
+
+            try {
+                // Submit to FormSubmit
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.success'] || 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.';
+
+                    // Reset form
+                    this.reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.className = 'form-status';
+                        formStatus.textContent = '';
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error
+                formStatus.className = 'form-status error';
+                formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.error'] || 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.';
+
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    formStatus.className = 'form-status';
+                    formStatus.textContent = '';
+                }, 5000);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    }
 });
 
 // Smooth scroll fonksiyonu
@@ -624,68 +687,3 @@ function createScrollToTop() {
 
 // Sayfa yüklendiğinde scroll to top butonunu oluştur
 window.addEventListener('load', createScrollToTop);
-
-// Contact form submission handler
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const submitBtn = this.querySelector('.contact-submit');
-            const formStatus = document.getElementById('formStatus');
-            const originalBtnText = submitBtn.innerHTML;
-
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            const lang = getCurrentLanguage();
-            const sendingText = TRANSLATIONS[lang]?.['contact.form.sending'] || 'Gönderiliyor...';
-            submitBtn.innerHTML = `<span>${sendingText}</span>`;
-
-            // Get form data
-            const formData = new FormData(this);
-
-            try {
-                // Submit to FormSubmit
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Success
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.success'] || 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.';
-
-                    // Reset form
-                    this.reset();
-
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formStatus.className = 'form-status';
-                        formStatus.textContent = '';
-                    }, 5000);
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                // Error
-                formStatus.className = 'form-status error';
-                formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.error'] || 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.';
-
-                // Hide error message after 5 seconds
-                setTimeout(() => {
-                    formStatus.className = 'form-status';
-                    formStatus.textContent = '';
-                }, 5000);
-            } finally {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
-        });
-    }
-});
