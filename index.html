@@ -178,6 +178,117 @@
                 </div>
             </section>
 
+            <!-- Contact Section -->
+            <section class="contact-section" id="iletisim">
+                <div class="section-header">
+                    <div class="section-label" data-i18n="contact.label">İletişim</div>
+                    <h3 class="section-title" data-i18n="contact.title">Bizimle İletişime Geçin</h3>
+                </div>
+
+                <div class="contact-container">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <p class="contact-intro" data-i18n="contact.intro">
+                            Projeleriniz ve iş birliği fırsatları için bizimle iletişime geçebilirsiniz.
+                        </p>
+
+                        <div class="contact-methods">
+                            <a href="mailto:feza@fezasavas.com" class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="m2 7 10 6 10-6"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span class="contact-method-label" data-i18n="contact.email.label">E-posta</span>
+                                    <span class="contact-method-value">feza@fezasavas.com</span>
+                                </div>
+                            </a>
+
+                            <a href="tel:+905551234567" class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span class="contact-method-label" data-i18n="contact.phone.label">Telefon</span>
+                                    <span class="contact-method-value">+90 555 123 45 67</span>
+                                </div>
+                            </a>
+
+                            <a href="https://linkedin.com/in/fezasavas" target="_blank" rel="noopener noreferrer" class="contact-method">
+                                <div class="contact-method-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-method-details">
+                                    <span class="contact-method-label">LinkedIn</span>
+                                    <span class="contact-method-value">linkedin.com/in/fezasavas</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/feza@fezasavas.com" method="POST">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="Yeni İletişim Formu Mesajı - fezasavas.com">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <div class="form-group">
+                            <label for="name" data-i18n="contact.form.name">Ad Soyad</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                data-i18n-placeholder="contact.form.namePlaceholder"
+                                placeholder="Adınız ve soyadınız"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" data-i18n="contact.form.email">E-posta</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                                data-i18n-placeholder="contact.form.emailPlaceholder"
+                                placeholder="ornek@email.com"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" data-i18n="contact.form.message">Mesajınız</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                required
+                                data-i18n-placeholder="contact.form.messagePlaceholder"
+                                placeholder="Mesajınızı buraya yazın..."
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="contact-submit">
+                            <span data-i18n="contact.form.submit">Gönder</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                        </button>
+
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+            </section>
+
             <!-- Footer -->
             <footer class="footer">
                 <p>

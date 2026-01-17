@@ -6,6 +6,39 @@ const SUPPORTED_LANGUAGES = ['tr', 'en', 'fr'];
 const DEFAULT_LANGUAGE = 'tr';
 
 const TRANSLATIONS = {
+    tr: {
+        'logo.tagline': 'Danışmanlık & Dış Ticaret',
+        'nav.corporate': 'Kurumsal',
+        'nav.work': 'İşler / Çalışmalarımız',
+        'nav.projects': 'Projelerimiz',
+        'nav.home': 'Ana Sayfa',
+        'nav.about': 'Hakkımızda',
+        'nav.academy': 'Akademi',
+        'nav.consulting': 'Danışmanlıklarımız',
+        'nav.trade': 'Dünya ile Ticaret',
+        'nav.delta': 'Delta Proje',
+        'nav.klinker': 'Klinker İhracatı',
+        'nav.pet': 'Pet Şişe İhracatı',
+        'footer.copyright.short': '© 2025 Feza Savaş',
+        'footer.copyright.full': '© 2025 Feza Savaş - Tüm hakları saklıdır.',
+        'footer.contact': 'İletişim',
+        'footer.admin': 'Admin Girişi',
+        'contact.label': 'İletişim',
+        'contact.title': 'Bizimle İletişime Geçin',
+        'contact.intro': 'Projeleriniz ve iş birliği fırsatları için bizimle iletişime geçebilirsiniz.',
+        'contact.email.label': 'E-posta',
+        'contact.phone.label': 'Telefon',
+        'contact.form.name': 'Ad Soyad',
+        'contact.form.namePlaceholder': 'Adınız ve soyadınız',
+        'contact.form.email': 'E-posta',
+        'contact.form.emailPlaceholder': 'ornek@email.com',
+        'contact.form.message': 'Mesajınız',
+        'contact.form.messagePlaceholder': 'Mesajınızı buraya yazın...',
+        'contact.form.submit': 'Gönder',
+        'contact.form.sending': 'Gönderiliyor...',
+        'contact.form.success': 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.',
+        'contact.form.error': 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.'
+    },
     en: {
         'logo.tagline': 'Consulting & Foreign Trade',
         'nav.corporate': 'Corporate',
@@ -154,7 +187,22 @@ const TRANSLATIONS = {
         'academy.hero.subtitle': "Feza Bey's expert notes, strategy insights, and field experience are here.",
         'academy.section.label': 'Articles',
         'academy.section.title': 'Latest Posts',
-        'academy.empty': 'No academy articles have been published yet.'
+        'academy.empty': 'No academy articles have been published yet.',
+        'contact.label': 'Contact',
+        'contact.title': 'Get in Touch',
+        'contact.intro': 'You can contact us for your projects and collaboration opportunities.',
+        'contact.email.label': 'Email',
+        'contact.phone.label': 'Phone',
+        'contact.form.name': 'Full Name',
+        'contact.form.namePlaceholder': 'Your name and surname',
+        'contact.form.email': 'Email',
+        'contact.form.emailPlaceholder': 'example@email.com',
+        'contact.form.message': 'Your Message',
+        'contact.form.messagePlaceholder': 'Write your message here...',
+        'contact.form.submit': 'Send',
+        'contact.form.sending': 'Sending...',
+        'contact.form.success': 'Your message has been sent successfully! We will get back to you soon.',
+        'contact.form.error': 'An error occurred while sending your message. Please try again.'
     },
     fr: {
         'logo.tagline': 'Conseil & Commerce extérieur',
@@ -301,10 +349,25 @@ const TRANSLATIONS = {
         'pet.section.export.title': 'Exportation mondiale',
         'pet.section.export.desc': 'Avec nos produits de qualité et notre service fiable, nous réalisons des exportations réussies vers de nombreux pays. Notre équipe export gère avec professionnalisme la logistique et les procédures douanières.',
         'academy.hero.title': 'Académie <span>Articles</span>',
-        'academy.hero.subtitle': 'Les notes d’expertise, partages de stratégie et expériences terrain de Feza Bey sont ici.',
+        'academy.hero.subtitle': 'Les notes d'expertise, partages de stratégie et expériences terrain de Feza Bey sont ici.',
         'academy.section.label': 'Articles',
         'academy.section.title': 'Derniers articles',
-        'academy.empty': 'Aucun article de l’académie n’a encore été publié.'
+        'academy.empty': 'Aucun article de l'académie n'a encore été publié.',
+        'contact.label': 'Contact',
+        'contact.title': 'Contactez-nous',
+        'contact.intro': 'Vous pouvez nous contacter pour vos projets et opportunités de collaboration.',
+        'contact.email.label': 'E-mail',
+        'contact.phone.label': 'Téléphone',
+        'contact.form.name': 'Nom complet',
+        'contact.form.namePlaceholder': 'Votre nom et prénom',
+        'contact.form.email': 'E-mail',
+        'contact.form.emailPlaceholder': 'exemple@email.com',
+        'contact.form.message': 'Votre message',
+        'contact.form.messagePlaceholder': 'Écrivez votre message ici...',
+        'contact.form.submit': 'Envoyer',
+        'contact.form.sending': 'Envoi en cours...',
+        'contact.form.success': 'Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.',
+        'contact.form.error': 'Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.'
     }
 };
 
@@ -343,7 +406,7 @@ const fetchCountryLanguage = async () => {
 
 const updateTextTranslations = (lang) => {
     const elements = document.querySelectorAll(
-        '[data-i18n], [data-i18n-html], [data-i18n-alt], [data-i18n-aria-label]'
+        '[data-i18n], [data-i18n-html], [data-i18n-alt], [data-i18n-aria-label], [data-i18n-placeholder]'
     );
     elements.forEach((element) => {
         const key = element.dataset.i18n || element.dataset.i18nHtml;
@@ -374,6 +437,14 @@ const updateTextTranslations = (lang) => {
             }
             const ariaTranslation = TRANSLATIONS[lang]?.[element.dataset.i18nAriaLabel];
             element.setAttribute('aria-label', ariaTranslation || element.dataset.i18nAriaLabelDefault);
+        }
+
+        if (element.dataset.i18nPlaceholder) {
+            if (!element.dataset.i18nPlaceholderDefault) {
+                element.dataset.i18nPlaceholderDefault = element.getAttribute('placeholder') || '';
+            }
+            const placeholderTranslation = TRANSLATIONS[lang]?.[element.dataset.i18nPlaceholder];
+            element.setAttribute('placeholder', placeholderTranslation || element.dataset.i18nPlaceholderDefault);
         }
     });
 };
@@ -553,3 +624,68 @@ function createScrollToTop() {
 
 // Sayfa yüklendiğinde scroll to top butonunu oluştur
 window.addEventListener('load', createScrollToTop);
+
+// Contact form submission handler
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('.contact-submit');
+            const formStatus = document.getElementById('formStatus');
+            const originalBtnText = submitBtn.innerHTML;
+
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            const lang = getCurrentLanguage();
+            const sendingText = TRANSLATIONS[lang]?.['contact.form.sending'] || 'Gönderiliyor...';
+            submitBtn.innerHTML = `<span>${sendingText}</span>`;
+
+            // Get form data
+            const formData = new FormData(this);
+
+            try {
+                // Submit to FormSubmit
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.success'] || 'Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.';
+
+                    // Reset form
+                    this.reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formStatus.className = 'form-status';
+                        formStatus.textContent = '';
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error
+                formStatus.className = 'form-status error';
+                formStatus.textContent = TRANSLATIONS[lang]?.['contact.form.error'] || 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.';
+
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    formStatus.className = 'form-status';
+                    formStatus.textContent = '';
+                }, 5000);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+    }
+});
