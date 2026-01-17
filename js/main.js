@@ -349,10 +349,10 @@ const TRANSLATIONS = {
         'pet.section.export.title': 'Exportation mondiale',
         'pet.section.export.desc': 'Avec nos produits de qualité et notre service fiable, nous réalisons des exportations réussies vers de nombreux pays. Notre équipe export gère avec professionnalisme la logistique et les procédures douanières.',
         'academy.hero.title': 'Académie <span>Articles</span>',
-        'academy.hero.subtitle': 'Les notes d'expertise, partages de stratégie et expériences terrain de Feza Bey sont ici.',
+        'academy.hero.subtitle': 'Les notes d\'expertise, partages de stratégie et expériences terrain de Feza Bey sont ici.',
         'academy.section.label': 'Articles',
         'academy.section.title': 'Derniers articles',
-        'academy.empty': 'Aucun article de l'académie n'a encore été publié.',
+        'academy.empty': 'Aucun article de l\'académie n\'a encore été publié.',
         'contact.label': 'Contact',
         'contact.title': 'Contactez-nous',
         'contact.intro': 'Vous pouvez nous contacter pour vos projets et opportunités de collaboration.',
@@ -367,7 +367,7 @@ const TRANSLATIONS = {
         'contact.form.submit': 'Envoyer',
         'contact.form.sending': 'Envoi en cours...',
         'contact.form.success': 'Votre message a été envoyé avec succès ! Nous vous répondrons bientôt.',
-        'contact.form.error': 'Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer.'
+        'contact.form.error': 'Une erreur s\'est produite lors de l\'envoi de votre message. Veuillez réessayer.'
     }
 };
 
@@ -474,9 +474,7 @@ const updateLanguageButtons = (lang) => {
 };
 
 const setLanguage = (lang, { persist = true } = {}) => {
-    console.log('setLanguage called with:', lang);
     if (!SUPPORTED_LANGUAGES.includes(lang)) {
-        console.error('Unsupported language:', lang);
         return;
     }
 
@@ -487,28 +485,22 @@ const setLanguage = (lang, { persist = true } = {}) => {
     document.documentElement.setAttribute('lang', lang);
     window.fezaLanguage = lang;
 
-    console.log('Updating UI for language:', lang);
     updateLanguageButtons(lang);
     updateTextTranslations(lang);
     updateLanguageBlocks(lang);
 
     document.dispatchEvent(new CustomEvent(LANGUAGE_EVENT, { detail: { language: lang } }));
-    console.log('Language changed to:', lang);
 };
 
 const initLanguageSwitcher = () => {
     const switchers = document.querySelectorAll('[data-language-switcher]');
-    console.log('Language switchers found:', switchers.length);
     if (!switchers.length) return;
 
     const buttons = document.querySelectorAll('[data-language-switcher] .language-btn[data-lang]');
-    console.log('Language buttons found:', buttons.length);
     buttons.forEach((button) => {
-        console.log('Adding listener to button:', button.dataset.lang);
         button.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('Button clicked:', button.dataset.lang);
             setLanguage(button.dataset.lang || DEFAULT_LANGUAGE);
         });
     });
