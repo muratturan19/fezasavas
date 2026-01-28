@@ -14,7 +14,7 @@ const UI_TRANSLATIONS = {
     },
     fr: {
         notFound: 'Article introuvable.',
-        loadError: 'Impossible de charger l’article.'
+        loadError: "Impossible de charger l'article."
     }
 };
 
