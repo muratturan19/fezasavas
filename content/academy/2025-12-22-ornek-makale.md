@@ -2,6 +2,7 @@
 title: "Örnek Makale"
 date: "2025-12-22"
 description: "Kısa açıklama"
+published: false
 tags:
   - "otomasyon"
   - "strateji"
