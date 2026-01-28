@@ -14,10 +14,12 @@ const DEFAULT_ADMIN_ORIGINS = [
     'https://fezasavas.onrender.com'
 ];
 const ADMIN_ORIGIN = process.env.ADMIN_ORIGIN;
-const ADMIN_ORIGINS = (process.env.ADMIN_ORIGINS || ADMIN_ORIGIN || DEFAULT_ADMIN_ORIGINS.join(','))
-    .split(',')
-    .map((origin) => origin.trim())
+const normalizeOrigin = (origin) => origin.trim().replace(/\/+$/, '');
+const resolvedAdminOrigins = (process.env.ADMIN_ORIGINS || ADMIN_ORIGIN || DEFAULT_ADMIN_ORIGINS.join(','))
+    .split(/[,\s]+/)
+    .map((origin) => normalizeOrigin(origin))
     .filter(Boolean);
+const ADMIN_ORIGINS = resolvedAdminOrigins.length ? resolvedAdminOrigins : DEFAULT_ADMIN_ORIGINS;
 const ADMIN_USER = process.env.ADMIN_USER;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -36,7 +38,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-    const requestOrigin = req.headers.origin;
+    const requestOrigin = req.headers.origin ? normalizeOrigin(req.headers.origin) : undefined;
     const allowOrigin = ADMIN_ORIGINS.includes('*')
         ? '*'
         : (requestOrigin && ADMIN_ORIGINS.includes(requestOrigin) ? requestOrigin : ADMIN_ORIGINS[0]);
