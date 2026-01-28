@@ -14,11 +14,13 @@ const DEFAULT_ADMIN_ORIGINS = [
     'https://fezasavas.onrender.com'
 ];
 const ADMIN_ORIGIN = process.env.ADMIN_ORIGIN;
-const resolvedAdminOrigins = (process.env.ADMIN_ORIGINS || ADMIN_ORIGIN || DEFAULT_ADMIN_ORIGINS.join(','))
-    .split(',')
-    .map((origin) => origin.trim())
-    .filter(Boolean);
-const ADMIN_ORIGINS = resolvedAdminOrigins.length ? resolvedAdminOrigins : DEFAULT_ADMIN_ORIGINS;
+const originsSource = process.env.ADMIN_ORIGINS || ADMIN_ORIGIN;
+const customOrigins = originsSource
+    ? originsSource.split(/[\s,]+/).map((origin) => normalizeOrigin(origin)).filter(Boolean)
+    : [];
+const ADMIN_ORIGINS = customOrigins.length > 0
+    ? customOrigins
+    : DEFAULT_ADMIN_ORIGINS.map((origin) => normalizeOrigin(origin)).filter(Boolean);
 const ADMIN_USER = process.env.ADMIN_USER;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
