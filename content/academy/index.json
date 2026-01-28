@@ -21,7 +21,7 @@
     "tags": [
       "svsdvsdv"
     ],
-    "published": true
+    "published": false
   },
   {
     "slug": "2026-01-28-egdgdgdd",
@@ -42,7 +42,8 @@
     "coverImage": "/uploads/2025-12-22-makale-2.jpg",
     "tags": [
       "starateji"
-    ]
+    ],
+    "published": true
   },
   {
     "slug": "2025-12-22-yeni-makale-denemesi",
@@ -52,7 +53,8 @@
     "coverImage": "/uploads/2025-12-22-yeni-makale-denemesi.jpg",
     "tags": [
       "Strateji"
-    ]
+    ],
+    "published": true
   },
   {
     "slug": "2025-12-22-ornek-makale",
@@ -63,6 +65,7 @@
     "tags": [
       "otomasyon",
       "strateji"
-    ]
+    ],
+    "published": true
   }
 ]
