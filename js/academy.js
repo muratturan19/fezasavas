@@ -1,7 +1,19 @@
-// Use global variables from main.js (LANGUAGE_STORAGE_KEY, LANGUAGE_EVENT)
+// Use global functions from main.js, with fallbacks
 const fezaI18n = window.fezaI18n || {};
 const ACADEMY_STORAGE_KEY = typeof LANGUAGE_STORAGE_KEY !== 'undefined' ? LANGUAGE_STORAGE_KEY : 'fezaLanguage';
 const ACADEMY_LANGUAGE_EVENT = typeof LANGUAGE_EVENT !== 'undefined' ? LANGUAGE_EVENT : 'feza:languagechange';
+
+const academyGetCurrentLanguage = typeof getCurrentLanguage !== 'undefined' ? getCurrentLanguage : () => {
+    const stored = localStorage.getItem(ACADEMY_STORAGE_KEY);
+    if (stored) return stored;
+    return document.documentElement.lang || 'tr';
+};
+
+const academyGetLocale = typeof getLocale !== 'undefined' ? getLocale : (language) => {
+    if (language === 'fr') return 'fr-FR';
+    if (language === 'en') return 'en-US';
+    return 'tr-TR';
+};
 
 const academyGrid = document.getElementById('academy-grid');
 const academyEmpty = document.getElementById('academy-empty');
@@ -23,22 +35,10 @@ const UI_TRANSLATIONS = {
     fr: {
         all: 'Tous',
         readMore: 'Lire →',
-        loadError: 'Impossible de charger la liste de l’académie.',
-        empty: 'Aucun article de l’académie n’a encore été publié.'
+        loadError: 'Impossible de charger la liste de l'académie.',
+        empty: 'Aucun article de l'académie n'a encore été publié.'
     }
 };
-
-const getCurrentLanguage = fezaI18n.getCurrentLanguage || (() => {
-    const stored = localStorage.getItem(ACADEMY_STORAGE_KEY);
-    if (stored) return stored;
-    return document.documentElement.lang || 'tr';
-});
-
-const getLocale = fezaI18n.getLocale || ((language) => {
-    if (language === 'fr') return 'fr-FR';
-    if (language === 'en') return 'en-US';
-    return 'tr-TR';
-});
 
 const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
 
@@ -47,7 +47,7 @@ const formatDate = (dateString, language) => {
     if (Number.isNaN(date.getTime())) {
         return dateString;
     }
-    return date.toLocaleDateString(getLocale(language), {
+    return date.toLocaleDateString(academyGetLocale(language), {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -130,7 +130,7 @@ const renderFilters = (posts, onFilter, language) => {
 let cachedPosts = [];
 
 const renderAcademy = (posts) => {
-    const language = getCurrentLanguage();
+    const language = academyGetCurrentLanguage();
     const handleFilter = (tag) => {
         if (!tag) {
             renderCards(posts, language);
@@ -167,7 +167,7 @@ const loadAcademy = async () => {
         renderAcademy(cachedPosts);
     } catch (error) {
         academyEmpty.hidden = false;
-        academyEmpty.textContent = getTranslations(getCurrentLanguage()).loadError;
+        academyEmpty.textContent = getTranslations(academyGetCurrentLanguage()).loadError;
     }
 };
 
@@ -178,7 +178,7 @@ if (document) {
             return;
         }
         if (academyEmpty && !academyEmpty.hidden) {
-            academyEmpty.textContent = getTranslations(getCurrentLanguage()).empty;
+            academyEmpty.textContent = getTranslations(academyGetCurrentLanguage()).empty;
         }
     });
 }

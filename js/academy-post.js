@@ -21,17 +21,17 @@ const UI_TRANSLATIONS = {
 const articleRoot = document.querySelector('[data-article-slug]');
 const slug = articleRoot?.dataset.articleSlug;
 
-const getCurrentLanguage = fezaI18n.getCurrentLanguage || (() => {
+const postGetCurrentLanguage = typeof getCurrentLanguage !== 'undefined' ? getCurrentLanguage : () => {
     const stored = localStorage.getItem(POST_STORAGE_KEY);
     if (stored) return stored;
     return document.documentElement.lang || 'tr';
-});
+};
 
-const getLocale = fezaI18n.getLocale || ((language) => {
+const postGetLocale = typeof getLocale !== 'undefined' ? getLocale : (language) => {
     if (language === 'fr') return 'fr-FR';
     if (language === 'en') return 'en-US';
     return 'tr-TR';
-});
+};
 
 const getTranslations = (language) => UI_TRANSLATIONS[language] || UI_TRANSLATIONS.en;
 
@@ -73,7 +73,7 @@ const formatDate = (dateString, language) => {
     if (Number.isNaN(date.getTime())) {
         return dateString;
     }
-    return date.toLocaleDateString(getLocale(language), {
+    return date.toLocaleDateString(postGetLocale(language), {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -92,7 +92,7 @@ const renderArticle = (frontmatter, markdown) => {
 
     if (title && frontmatter.title) title.textContent = frontmatter.title;
     if (description && frontmatter.description) description.textContent = frontmatter.description;
-    if (dateEl && frontmatter.date) dateEl.textContent = formatDate(frontmatter.date, getCurrentLanguage());
+    if (dateEl && frontmatter.date) dateEl.textContent = formatDate(frontmatter.date, postGetCurrentLanguage());
 
     if (tagsEl && Array.isArray(frontmatter.tags)) {
         tagsEl.innerHTML = '';
@@ -126,7 +126,7 @@ const updateDate = () => {
     if (!cachedFrontmatter) return;
     const dateEl = document.getElementById('article-date');
     if (dateEl && cachedFrontmatter.date) {
-        dateEl.textContent = formatDate(cachedFrontmatter.date, getCurrentLanguage());
+        dateEl.textContent = formatDate(cachedFrontmatter.date, postGetCurrentLanguage());
     }
 };
 
@@ -150,9 +150,9 @@ const loadArticle = async () => {
         if (data.published === false) {
             const contentEl = document.getElementById('article-content');
             if (contentEl) {
-                contentEl.textContent = getTranslations(getCurrentLanguage()).notFound;
+                contentEl.textContent = getTranslations(postGetCurrentLanguage()).notFound;
             }
-            document.title = `${getTranslations(getCurrentLanguage()).notFound} - Feza Savaş`;
+            document.title = `${getTranslations(postGetCurrentLanguage()).notFound} - Feza Savaş`;
             return;
         }
         cachedFrontmatter = data;
@@ -160,7 +160,7 @@ const loadArticle = async () => {
     } catch (error) {
         const contentEl = document.getElementById('article-content');
         if (contentEl) {
-            contentEl.textContent = getTranslations(getCurrentLanguage()).loadError;
+            contentEl.textContent = getTranslations(postGetCurrentLanguage()).loadError;
         }
     }
 };
