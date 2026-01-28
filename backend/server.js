@@ -9,7 +9,15 @@ const upload = multer({
     limits: { fileSize: 5 * 1024 * 1024 }
 });
 
-const ADMIN_ORIGIN = process.env.ADMIN_ORIGIN || '*';
+const DEFAULT_ADMIN_ORIGINS = [
+    'https://fezasavas.com',
+    'https://fezasavas.onrender.com'
+];
+const ADMIN_ORIGIN = process.env.ADMIN_ORIGIN;
+const ADMIN_ORIGINS = (process.env.ADMIN_ORIGINS || ADMIN_ORIGIN || DEFAULT_ADMIN_ORIGINS.join(','))
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
 const ADMIN_USER = process.env.ADMIN_USER;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
@@ -28,7 +36,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', ADMIN_ORIGIN);
+    const requestOrigin = req.headers.origin;
+    const allowOrigin = ADMIN_ORIGINS.includes('*')
+        ? '*'
+        : (requestOrigin && ADMIN_ORIGINS.includes(requestOrigin) ? requestOrigin : ADMIN_ORIGINS[0]);
+    if (allowOrigin) {
+        res.setHeader('Access-Control-Allow-Origin', allowOrigin);
+        res.setHeader('Vary', 'Origin');
+    }
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, DELETE, OPTIONS');
     if (req.method === 'OPTIONS') {
