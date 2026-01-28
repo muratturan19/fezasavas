@@ -145,7 +145,15 @@ const renderAcademy = (posts) => {
 
 const loadAcademy = async () => {
     try {
-        const response = await fetch('../content/academy/index.json');
+        // Fetch from GitHub to get latest content
+        const githubUrl = 'https://raw.githubusercontent.com/muratturan19/fezasavas/main/content/academy/index.json';
+        let response = await fetch(githubUrl);
+
+        // Fallback to local file if GitHub fetch fails
+        if (!response.ok) {
+            response = await fetch('../content/academy/index.json');
+        }
+
         if (!response.ok) {
             throw new Error('Akademi listesi yüklenemedi.');
         }

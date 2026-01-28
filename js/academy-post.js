@@ -132,7 +132,15 @@ const updateDate = () => {
 const loadArticle = async () => {
     if (!slug) return;
     try {
-        const response = await fetch(`../content/academy/${slug}.md`);
+        // Fetch from GitHub to get latest content
+        const githubUrl = `https://raw.githubusercontent.com/muratturan19/fezasavas/main/content/academy/${slug}.md`;
+        let response = await fetch(githubUrl);
+
+        // Fallback to local file if GitHub fetch fails
+        if (!response.ok) {
+            response = await fetch(`../content/academy/${slug}.md`);
+        }
+
         if (!response.ok) {
             throw new Error('Makale bulunamadı.');
         }
