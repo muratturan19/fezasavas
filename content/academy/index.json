@@ -11,17 +11,5 @@
       "Karar alma Süreçleri"
     ],
     "published": true
-  },
-  {
-    "slug": "2025-12-22-ornek-makale",
-    "title": "Örnek Makale",
-    "date": "2025-12-22",
-    "description": "Kısa açıklama",
-    "coverImage": "",
-    "tags": [
-      "otomasyon",
-      "strateji"
-    ],
-    "published": false
   }
 ]
