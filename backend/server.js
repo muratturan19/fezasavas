@@ -4,6 +4,12 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const app = express();
+
+const normalizeOrigin = (origin) => {
+    if (!origin) return '';
+    return origin.toLowerCase().replace(/\/+$/, '');
+};
+
 const upload = multer({
     storage: multer.memoryStorage(),
     limits: { fileSize: 5 * 1024 * 1024 }
