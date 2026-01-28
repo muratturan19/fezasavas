@@ -2,6 +2,7 @@ const loginForm = document.getElementById('login-form');
 const publishForm = document.getElementById('publish-form');
 const loginCard = document.getElementById('login-card');
 const adminContent = document.getElementById('admin-content');
+const loginStatusEl = document.getElementById('login-status');
 const statusEl = document.getElementById('publish-status');
 const postsStatusEl = document.getElementById('posts-status');
 const postsTableBody = document.getElementById('posts-table-body');
@@ -19,6 +20,13 @@ const setStatus = (message, type) => {
     statusEl.textContent = message;
     statusEl.classList.remove('is-success', 'is-error');
     if (type) statusEl.classList.add(type);
+};
+
+const setLoginStatus = (message, type) => {
+    if (!loginStatusEl) return;
+    loginStatusEl.textContent = message;
+    loginStatusEl.classList.remove('is-success', 'is-error');
+    if (type) loginStatusEl.classList.add(type);
 };
 
 const setPostsStatus = (message, type) => {
@@ -78,6 +86,23 @@ const formatDate = (dateString) => {
         return dateString;
     }
     return date.toLocaleDateString('tr-TR');
+};
+
+const normalizeApiBase = (input) => {
+    const trimmed = input.trim();
+    if (!trimmed) return null;
+    const hasProtocol = /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(trimmed);
+    let urlString = trimmed;
+    if (!hasProtocol) {
+        const isLocal = /^(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?(\/|$)/.test(trimmed);
+        urlString = `${isLocal ? 'http' : 'https'}://${trimmed}`;
+    }
+    try {
+        const url = new URL(urlString);
+        return `${url.origin}${url.pathname}`.replace(/\/$/, '');
+    } catch (error) {
+        return null;
+    }
 };
 
 const resetPublishForm = () => {
@@ -237,12 +262,20 @@ loginForm?.addEventListener('submit', (event) => {
     const apiBase = document.getElementById('admin-api').value.trim();
 
     if (!username || !password || !apiBase) {
+        setLoginStatus('Lütfen kullanıcı adı, şifre ve API adresini girin.', 'is-error');
+        return;
+    }
+
+    const normalizedApiBase = normalizeApiBase(apiBase);
+    if (!normalizedApiBase) {
+        setLoginStatus('Geçerli bir API adresi girin (ör. https://api.domain.com).', 'is-error');
         return;
     }
 
     sessionStorage.setItem('academyUsername', username);
     sessionStorage.setItem('academyPassword', password);
-    sessionStorage.setItem('academyApiBase', apiBase.replace(/\/$/, ''));
+    sessionStorage.setItem('academyApiBase', normalizedApiBase);
+    setLoginStatus('', null);
 
     showPublish();
     switchTab('publish');
