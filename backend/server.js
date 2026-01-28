@@ -14,10 +14,9 @@ const DEFAULT_ADMIN_ORIGINS = [
     'https://fezasavas.onrender.com'
 ];
 const ADMIN_ORIGIN = process.env.ADMIN_ORIGIN;
-const normalizeOrigin = (origin) => origin.trim().replace(/\/+$/, '');
 const resolvedAdminOrigins = (process.env.ADMIN_ORIGINS || ADMIN_ORIGIN || DEFAULT_ADMIN_ORIGINS.join(','))
-    .split(/[,\s]+/)
-    .map((origin) => normalizeOrigin(origin))
+    .split(',')
+    .map((origin) => origin.trim())
     .filter(Boolean);
 const ADMIN_ORIGINS = resolvedAdminOrigins.length ? resolvedAdminOrigins : DEFAULT_ADMIN_ORIGINS;
 const ADMIN_USER = process.env.ADMIN_USER;
