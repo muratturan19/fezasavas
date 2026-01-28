@@ -35,8 +35,8 @@ const UI_TRANSLATIONS = {
     fr: {
         all: 'Tous',
         readMore: 'Lire →',
-        loadError: 'Impossible de charger la liste de l'académie.',
-        empty: 'Aucun article de l'académie n'a encore été publié.'
+        loadError: "Impossible de charger la liste de l'académie.",
+        empty: "Aucun article de l'académie n'a encore été publié."
     }
 };
 
