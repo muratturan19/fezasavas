@@ -37,10 +37,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-    const requestOrigin = req.headers.origin;
-    const allowOrigin = ADMIN_ORIGINS.includes('*')
-        ? '*'
-        : (requestOrigin && ADMIN_ORIGINS.includes(requestOrigin) ? requestOrigin : ADMIN_ORIGINS[0]);
+    const requestOrigin = req.headers.origin ? normalizeOrigin(req.headers.origin) : undefined;
+    const isAllowedOrigin = ADMIN_ORIGINS.includes('*')
+        || (requestOrigin && ADMIN_ORIGINS.includes(requestOrigin));
+    const allowOrigin = requestOrigin || ADMIN_ORIGINS[0];
+    if (requestOrigin && !isAllowedOrigin && !ADMIN_ORIGINS.includes('*')) {
+        console.warn(`CORS origin not in allowlist: ${requestOrigin}`);
+    }
     if (allowOrigin) {
         res.setHeader('Access-Control-Allow-Origin', allowOrigin);
         res.setHeader('Vary', 'Origin');
