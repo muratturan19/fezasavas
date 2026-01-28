@@ -1,6 +1,7 @@
+// Use global variables from main.js (LANGUAGE_STORAGE_KEY, LANGUAGE_EVENT)
 const fezaI18n = window.fezaI18n || {};
-const LANGUAGE_STORAGE_KEY = fezaI18n.LANGUAGE_STORAGE_KEY || 'fezaLanguage';
-const LANGUAGE_EVENT = fezaI18n.LANGUAGE_EVENT || 'feza:languagechange';
+const ACADEMY_STORAGE_KEY = typeof LANGUAGE_STORAGE_KEY !== 'undefined' ? LANGUAGE_STORAGE_KEY : 'fezaLanguage';
+const ACADEMY_LANGUAGE_EVENT = typeof LANGUAGE_EVENT !== 'undefined' ? LANGUAGE_EVENT : 'feza:languagechange';
 
 const academyGrid = document.getElementById('academy-grid');
 const academyEmpty = document.getElementById('academy-empty');
@@ -28,7 +29,7 @@ const UI_TRANSLATIONS = {
 };
 
 const getCurrentLanguage = fezaI18n.getCurrentLanguage || (() => {
-    const stored = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    const stored = localStorage.getItem(ACADEMY_STORAGE_KEY);
     if (stored) return stored;
     return document.documentElement.lang || 'tr';
 });
@@ -171,7 +172,7 @@ const loadAcademy = async () => {
 };
 
 if (document) {
-    document.addEventListener(LANGUAGE_EVENT, () => {
+    document.addEventListener(ACADEMY_LANGUAGE_EVENT, () => {
         if (cachedPosts.length) {
             renderAcademy(cachedPosts);
             return;
