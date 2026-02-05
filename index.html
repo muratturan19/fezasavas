@@ -246,8 +246,9 @@
                     <form class="contact-form" id="contactForm" action="https://formsubmit.co/feza@fezasavas.com" method="POST">
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_subject" value="Yeni İletişim Formu Mesajı - fezasavas.com">
-                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_captcha" value="true">
                         <input type="hidden" name="_template" value="table">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
 
                         <div class="form-group">
                             <label for="name" data-i18n="contact.form.name">Ad Soyad</label>
@@ -279,6 +280,7 @@
                                 id="message"
                                 name="message"
                                 rows="5"
+                                minlength="20"
                                 required
                                 data-i18n-placeholder="contact.form.messagePlaceholder"
                                 placeholder="Mesajınızı buraya yazın..."
