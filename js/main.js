@@ -722,6 +722,17 @@ const getBrowserLanguage = () => {
     return '';
 };
 
+// ?lang= URL parametresinden dil oku (hreflang bağlantıları ve paylaşılan URL'ler için)
+const getUrlLanguage = () => {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get('lang');
+        return SUPPORTED_LANGUAGES.includes(lang) ? lang : '';
+    } catch (e) {
+        return '';
+    }
+};
+
 const getCountryLanguage = (countryCode) => {
     if (!countryCode) return '';
     if (countryCode === 'TR') return 'tr';
@@ -846,6 +857,13 @@ const initLanguageSwitcher = () => {
     const storedLanguage = getStoredLanguage();
     if (storedLanguage) {
         setLanguage(storedLanguage, { persist: false });
+        return;
+    }
+
+    // URL ?lang= parametresi varsa öncelikli olarak uygula (hreflang / paylaşılan bağlantılar)
+    const urlLanguage = getUrlLanguage();
+    if (urlLanguage) {
+        setLanguage(urlLanguage);
         return;
     }
 

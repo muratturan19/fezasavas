@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fezasavas.com/sitemap.xml
+
+# Disallow admin and backend
+Disallow: /admin/
+Disallow: /backend/
