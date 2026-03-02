@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#16213e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c9a96e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8c88a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="950" cy="100" r="200" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="950" cy="100" r="280" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.08"/>
+  <circle cx="200" cy="530" r="150" fill="none" stroke="#c9a96e" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Gold accent line left -->
+  <rect x="80" y="200" width="4" height="230" fill="url(#accent)" rx="2"/>
+
+  <!-- Name -->
+  <text x="120" y="290" font-family="Georgia, serif" font-size="78" font-weight="bold" fill="#ffffff" filter="url(#glow)">Feza Sava&#351;</text>
+
+  <!-- Gold divider line -->
+  <rect x="120" y="320" width="500" height="2" fill="url(#accent)" rx="1"/>
+
+  <!-- Tagline TR -->
+  <text x="120" y="370" font-family="Arial, sans-serif" font-size="30" font-weight="300" fill="#c9a96e" letter-spacing="3">DANI&#350;MANLIK &amp; DI&#350; T&#304;CARET</text>
+
+  <!-- Tagline EN -->
+  <text x="120" y="415" font-family="Arial, sans-serif" font-size="22" font-weight="300" fill="#8899bb" letter-spacing="2">CONSULTING &amp; FOREIGN TRADE</text>
+
+  <!-- Service pills -->
+  <rect x="120" y="460" width="200" height="36" rx="18" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.6"/>
+  <text x="220" y="484" font-family="Arial, sans-serif" font-size="14" fill="#c9a96e" text-anchor="middle" opacity="0.9">Liderlik Dan&#305;&#351;manl&#305;&#287;&#305;</text>
+
+  <rect x="340" y="460" width="160" height="36" rx="18" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.6"/>
+  <text x="420" y="484" font-family="Arial, sans-serif" font-size="14" fill="#c9a96e" text-anchor="middle" opacity="0.9">Klinker &#304;hracat&#305;</text>
+
+  <rect x="520" y="460" width="180" height="36" rx="18" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.6"/>
+  <text x="610" y="484" font-family="Arial, sans-serif" font-size="14" fill="#c9a96e" text-anchor="middle" opacity="0.9">PET &#350;i&#351;e &#304;hracat&#305;</text>
+
+  <!-- Domain -->
+  <text x="120" y="570" font-family="Arial, sans-serif" font-size="20" fill="#6677aa" letter-spacing="1">www.fezasavas.com</text>
+
+  <!-- Language flags indicator -->
+  <text x="1080" y="570" font-family="Arial, sans-serif" font-size="16" fill="#6677aa" text-anchor="middle">TR · EN · FR · AR · ES</text>
+
+  <!-- Right decorative element -->
+  <text x="920" y="380" font-family="Georgia, serif" font-size="180" fill="#c9a96e" opacity="0.04" font-weight="bold">FS</text>
+</svg>
