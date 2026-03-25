@@ -156,11 +156,10 @@
 
 .academy-article-cover {
     width: 100%;
+    height: auto;
     border-radius: 16px;
     margin: 20px 0;
-    max-height: 360px;
-    object-fit: cover;
-    object-position: top center;
+    display: block;
 }
 
 .academy-article-content {
