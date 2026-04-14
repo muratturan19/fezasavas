@@ -100,6 +100,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://fezasavas.com/pages/pet-sise.html"/>
   </url>
 
+  <!-- Kabak Çekirdeği Ticareti / Pumpkin Seed Trade -->
+  <url>
+    <loc>https://fezasavas.com/pages/kabak-cekirdegi.html</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr"       href="https://fezasavas.com/pages/kabak-cekirdegi.html"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://fezasavas.com/pages/kabak-cekirdegi.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://fezasavas.com/pages/kabak-cekirdegi.html?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="ar"       href="https://fezasavas.com/pages/kabak-cekirdegi.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="es"       href="https://fezasavas.com/pages/kabak-cekirdegi.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://fezasavas.com/pages/kabak-cekirdegi.html"/>
+  </url>
+
   <!-- Akademi / Academy -->
   <url>
     <loc>https://fezasavas.com/akademi/</loc>
